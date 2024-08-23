@@ -1,0 +1,2 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_wizard_excel_to_json,access_wizard_excel_to_json,account_move_excel_to_json.model_wizard_excel_to_json,account.group_account_readonly,1,1,1,1

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_wizard_excel_to_json_form" model="ir.ui.view">
+        <field name="name">wizard.excel.to.json.form</field>
+        <field name="model">wizard.excel.to.json</field>
+        <field name="arch" type="xml">
+            <form string="Convert Excel to JSON">
+                <div class="alert alert-warning text-center" role="status">
+                  This wizard use the field Amount from the excel file, is mandatory to have this column
+                </div>
+                <group>
+                    <field name="excel_file" filename="excel_file_name"/>
+                    <field name="json_result" readonly="1" widget="CopyClipboardText"/>
+                </group>
+                <footer>
+                    <button string="Convert" type="object" name="convert_excel_to_json" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_excel_to_json" model="ir.actions.act_window">
+        <field name="name">Convert Excel to JSON</field>
+        <field name="res_model">wizard.excel.to.json</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="wizard_excel_to_json_menu_main" name="Wizard Import Move" parent="account.menu_finance_entries" sequence="20"/>
+    <menuitem id="wizard_excel_to_json_menu" parent="wizard_excel_to_json_menu_main" action="action_wizard_excel_to_json" sequence="20"/>
+
+</odoo>
