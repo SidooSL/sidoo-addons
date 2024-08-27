@@ -15,6 +15,15 @@ class WizardExcelToJson(models.TransientModel):
     excel_file = fields.Binary(required=True)
     json_result = fields.Text(readonly=True)
 
+    def open_account_move_template_wizard(self):
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "account.move.template.run",
+            "view_mode": "form",
+            "target": "new",
+            "context": {"default_overwrite": self.json_result},
+        }
+
     def convert_excel_to_json(self):
         # Read Excel
         file_content = base64.b64decode(self.excel_file)

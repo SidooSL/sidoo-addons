@@ -17,7 +17,7 @@
         "wizard/wizard_excel_to_json_view.xml",
     ],
     "external_dependencies": {
-        "python": ["pandas"],
+        "python": ["pandas", "openpyxl"],
     },
     "installable": True,
 }
