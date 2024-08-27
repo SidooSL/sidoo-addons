@@ -78,6 +78,11 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: account_move_excel_to_json
+#: model_terms:ir.ui.view,arch_db:account_move_excel_to_json.view_wizard_excel_to_json_form
+msgid "Open Move Template"
+msgstr "Abrir asistente plantilla"
+
+#. module: account_move_excel_to_json
 #. odoo-python
 #: code:addons/account_move_excel_to_json/wizard/wizard_excel_to_json.py:0
 #, python-format

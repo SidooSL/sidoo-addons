@@ -14,6 +14,7 @@
                 </group>
                 <footer>
                     <button string="Convert" type="object" name="convert_excel_to_json" class="btn-primary"/>
+                    <button string="Open Move Template" type="object" name="open_account_move_template_wizard" class="btn-primary" attrs="{'invisible': [('json_result', '=', False)]}"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
