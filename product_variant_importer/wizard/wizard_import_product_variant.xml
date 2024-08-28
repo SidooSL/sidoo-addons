@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_import_product_variant_view_form" model="ir.ui.view">
+        <field name="model">wizard.import.product.variant</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Product Import">
+                <sheet>
+                    <group>
+                        <field name="excel_file"/>
+                        <field name="import_stock" />
+                        <field name="import_stock_without_qty" groups="base.group_no_one"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="import_excel_products" string="Import" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="wizard_import_product_variant_action" model="ir.actions.act_window">
+        <field name="name">Wizard Product Import</field>
+        <field name="res_model">wizard.import.product.variant</field>
+        <field name="view_mode">form</field>
+       <field name="target">new</field>
+    </record>
+    <menuitem
+        id="wizard_import_product_variant_menu_root"
+        name="Products Import"
+        parent="stock.menu_stock_config_settings"
+        sequence="10"/>
+    <menuitem
+        id="wizard_import_product_variant_menu"
+        name="Wizard Product Import"
+        action="wizard_import_product_variant_action"
+        groups="stock.group_stock_manager"
+        parent="wizard_import_product_variant_menu_root"
+        sequence="10"/>
+</odoo>

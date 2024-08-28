@@ -1,0 +1,98 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_variant_importer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-28 06:03+0000\n"
+"PO-Revision-Date: 2024-08-28 06:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_variant_importer
+#: model:ir.model,name:product_variant_importer.model_wizard_import_product_variant
+msgid "Wizard to import product variants"
+msgstr "Asistente para importar variantes de productos"
+
+#. module: product_variant_importer
+#: model_terms:ir.ui.view,arch_db:product_variant_importer.wizard_import_product_variant_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__excel_file
+msgid "Excel File"
+msgstr "Fichero excel"
+
+#. module: product_variant_importer
+#: model:ir.model.fields,help:product_variant_importer.field_wizard_import_product_variant__excel_file
+msgid "Excel file with products, variants and stock information"
+msgstr "Fichero excel con productos, variantes y informacion del inventario"
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__id
+msgid "ID"
+msgstr ""
+
+#. module: product_variant_importer
+#: model_terms:ir.ui.view,arch_db:product_variant_importer.wizard_import_product_variant_view_form
+msgid "Import"
+msgstr "Importar"
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__import_stock
+msgid "Import Stock"
+msgstr "Importar stock"
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__import_stock_without_qty
+msgid "Import Stock Without Qty"
+msgstr "Importar stock sin cantidad"
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_variant_importer
+#: model:ir.model.fields,field_description:product_variant_importer.field_wizard_import_product_variant__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_variant_importer
+#: model:ir.ui.menu,name:product_variant_importer.wizard_import_product_variant_menu_root
+msgid "Products Import"
+msgstr "Importacion de productos"
+
+#. module: product_variant_importer
+#: model:ir.actions.act_window,name:product_variant_importer.wizard_import_product_variant_action
+#: model:ir.ui.menu,name:product_variant_importer.wizard_import_product_variant_menu
+#: model_terms:ir.ui.view,arch_db:product_variant_importer.wizard_import_product_variant_view_form
+msgid "Wizard Product Import"
+msgstr "Asistente importacion productos"
