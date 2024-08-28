@@ -26,17 +26,14 @@ This module allows you to import products, variants and stock data from an excel
     - Products Sheet
 
         code | name | supplier price | supplier name | tag
-        -----|------|-----------------|--------------|-----
 
     - Variants Sheet - Attribute values can be more than 2
 
         code | attribute | attribute value 1 | attribute value 2
-        -----|-----------|-------------------|-------------------
 
     - Stock Sheet
 
         default code | stock quantity | standar price
-        -----|-------------------|--------------------
 
 
 **Table of contents**
