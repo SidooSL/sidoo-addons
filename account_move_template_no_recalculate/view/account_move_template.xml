@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_move_template_form" model="ir.ui.view">
+        <field name="name">account.move.template.form</field>
+        <field name="model">account.move.template</field>
+        <field name="inherit_id" ref="account_move_template.account_move_template_form" />
+        <field name="arch" type="xml">
+            <field name="ref" position="after">
+                <field name="recalculate" />
+            </field>
+        </field>
+    </record>
+    <record id="account_move_template_tree" model="ir.ui.view">
+        <field name="name">account.move.template.tree</field>
+        <field name="model">account.move.template</field>
+        <field name="inherit_id" ref="account_move_template.account_move_template_tree" />
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="recalculate" optional="hide"/>
+            </field>
+        </field>
+    </record>
+</odoo>
