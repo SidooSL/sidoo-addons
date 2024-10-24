@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="account_asset_line_action" model="ir.actions.act_window">
+        <field name="name">Account Asset Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.asset.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('asset_id', '=', active_id)]</field>
+        <field name="context">{}</field>
+        <field name="target">current</field>
+    </record>
+    <record id="account_asset_view_form" model="ir.ui.view">
+        <field name="model">account.asset</field>
+        <field name="inherit_id" ref="account_asset_management.account_asset_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(account_asset_line_action)d" string="Initiation Asset Lines" type="action" class="oe_stat_button" icon="fa-bars"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
