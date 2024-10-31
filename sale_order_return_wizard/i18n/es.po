@@ -1,0 +1,70 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_order_return_wizard
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-31 10:40+0000\n"
+"PO-Revision-Date: 2023-10-31 10:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_return_wizard
+#: model_terms:ir.ui.view,arch_db:sale_order_return_wizard.view_sale_order_return_wizard_form
+msgid ""
+"<strong>We will look for the outgoing delivery notes for this customer "
+"containing the same product we have in negative</strong>"
+msgstr ""
+"<strong>Se van a buscar los albaranes de salida para este cliente que "
+"contenga el mismo producto que tenemos en negativo</strong>"
+
+#. module: sale_order_return_wizard
+#: model_terms:ir.ui.view,arch_db:sale_order_return_wizard.view_sale_order_return_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sale_order_return_wizard
+#: model_terms:ir.ui.view,arch_db:sale_order_return_wizard.view_order_form
+msgid "Create Return"
+msgstr "Crear devolución"
+
+#. module: sale_order_return_wizard
+#: model:ir.ui.menu,name:sale_order_return_wizard.menu_sale_return
+msgid "Returns"
+msgstr "Devoluciones"
+
+#. module: sale_order_return_wizard
+#: model:ir.actions.act_window,name:sale_order_return_wizard.action_sale_return
+msgid "Returns"
+msgstr "Devoluciones"
+
+#. module: sale_order_return_wizard
+#: model_terms:ir.ui.view,arch_db:sale_order_return_wizard.view_sale_order_return_wizard_form
+msgid "Lines to Return"
+msgstr "Lineas a devolver"
+
+#. module: sale_order_return_wizard
+#: model:ir.model.fields,field_description:sale_order_return_wizard.field_sale_order_return_wizard_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: sale_order_return_wizard
+#: model:ir.model.fields,field_description:sale_order_return_wizard.field_sale_order_return_wizard_line__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: sale_order_return_wizard
+#: model_terms:ir.ui.view,arch_db:sale_order_return_wizard.view_sale_order_return_wizard_form
+msgid "Return"
+msgstr "Devolver"
+
+#. module: sale_order_return_wizard
+#: model:ir.model.fields,field_description:sale_order_return_wizard.field_sale_order_return_wizard_line__uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
