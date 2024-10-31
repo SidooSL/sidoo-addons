@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button string="Create Return"
+                name="open_wizard_returns"
+                type="object"
+                context="{}" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_sale_return" model="ir.actions.act_window">
+        <field name="name">Returns</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="sale.view_order_tree"/>
+        <field name="domain">[('order_line.product_uom_qty', '&lt;', 0)]</field>
+    </record>
+
+    <menuitem id="menu_sale_return" name="Returns" parent="sale.sale_order_menu" action="action_sale_return"/>
+
+</odoo>
