@@ -1,44 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <record id="view_sale_order_return_wizard_form" model="ir.ui.view">
-            <field name="name">view.sale_order_return_wizard.form</field>
-            <field name="model">sale.order.return.wizard</field>
-            <field name="arch" type="xml">
-                <form string="Sale Order Return Wizard">
-                    <div class="alert alert-warning text-center" role="alert">
-                        <strong>We will look for the outgoing delivery notes for this customer containing the same product we have in negative</strong>
-                    </div>
-                    <field name="order_id" invisible="1"/>
-                    <separator string="Lines to Return"/>
-                    <group>
-                        <field name="order_return_wizard_lines" nolabel="1">
-                            <tree editable="top" create="0">
-                                <field name="product_id"/>
-                                <field name="quantity"/>
-                                <field name="uom_id"/>
-                                <field name="move_id"/>
-                            </tree>
-                        </field>
-                    </group>
-                    <footer>
-                        <button name="create_returns" string="Return" type="object" class="btn-primary"/>
-                        <button string="Cancel" class="btn-secondary" special="cancel" />
-                    </footer>
-                </form>
-            </field>
-        </record>
-
-        <record id="sale_order_return_wizard_action" model="ir.actions.act_window">
-            <field name="name">Sale Order Return Wizard</field>
-            <field name="res_model">sale.order.return.wizard</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Click to create a new Sale Order Return Wizard.
-                </p>
-            </field>
-        </record>
-
-    </data>
+    <record id="view_sale_order_return_wizard_form" model="ir.ui.view">
+        <field name="name">view.sale_order_return_wizard.form</field>
+        <field name="model">sale.order.return.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Sale Order Return Wizard">
+                <div class="alert alert-warning text-center" role="alert">
+                    <strong>We will look for the outgoing delivery notes for this customer containing the same product we have in negative</strong>
+                </div>
+                <field name="order_id" invisible="1"/>
+                <separator string="Lines to Return"/>
+                <group>
+                    <field name="order_return_wizard_lines" nolabel="1">
+                        <tree editable="top" create="0">
+                            <field name="product_id" options="{'no_create': True, 'no_open': True}" force_save="1"/>
+                            <field name="quantity"/>
+                            <field name="uom_id" readonly="1" groups="uom.group_uom"/>
+                            <field name="move_id" readonly="1"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="create_returns" string="Return" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
 </odoo>
