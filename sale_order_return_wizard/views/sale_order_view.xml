@@ -8,7 +8,7 @@
                 <button string="Create Return"
                 name="open_wizard_returns"
                 type="object"
-                context="{}" />
+                groups="base.group_user" />
             </xpath>
         </field>
     </record>

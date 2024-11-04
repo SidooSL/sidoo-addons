@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 class SaleReturnWizardLine(models.TransientModel):
@@ -32,11 +32,12 @@ class SaleReturnWizard(models.TransientModel):
     order_return_wizard_lines = fields.One2many(
         comodel_name="sale.order.return.wizard.line",
         compute="_compute_data",
+        readonly=False,
         inverse_name="wizard_id",
         string="Move Lines",
     )
 
-    picking_id = fields.Many2one(
+    picking_ids = fields.Many2many(
         comodel_name="stock.picking", compute="_compute_data", string="Picking"
     )
 
@@ -47,69 +48,73 @@ class SaleReturnWizard(models.TransientModel):
                 lambda line: line.product_uom_qty < 0
             )
             products = sale_lines_to_return.mapped("product_id")
-            picking_ids = record.order_id.picking_ids.filtered(
-                lambda p: p.state == "done"
-                and p.picking_type_id.code == "outgoing"
-                and p.partner_id.id == record.order_id.partner_id.id
-                and p.sale_id.id == record.order_id.id
-                and p.move_lines.filtered(lambda ml: ml.product_id.id in products.ids)
+            picking_ids = self.env["stock.picking"].search(
+                [
+                    ("state", "=", "done"),
+                    ("picking_type_id.code", "=", "outgoing"),
+                    ("partner_id", "=", record.order_id.partner_id.id),
+                    (
+                        "location_dest_id.id",
+                        "=",
+                        record.order_id.partner_id.property_stock_customer.id,
+                    ),
+                    ("move_lines.product_id", "in", products.ids),
+                ]
             )
-            record.picking_id = picking_ids[0] if picking_ids else False
+            record.picking_ids = picking_ids
             record.order_return_wizard_lines = self.env["sale.order.return.wizard.line"]
 
-            if record.picking_id:
-                moves = record.picking_id.move_lines.filtered(
-                    lambda m: m.product_id.id in products.ids
-                )
-                # Crear las líneas de devolución
+            if record.picking_ids:
                 return_lines = []
-                for sale_line in sale_lines_to_return:
-                    move = moves.filtered(
-                        lambda m: m.product_id == sale_line.product_id
+                for picking in record.picking_ids:
+                    moves = picking.move_lines.filtered(
+                        lambda m, products=products: m.product_id.id in products.ids
                     )
-                    move_id = move[0].id if move else False
-                    return_lines.append(
-                        (
-                            0,
-                            0,
-                            {
-                                "product_id": sale_line.product_id.id,
-                                "quantity": abs(sale_line.product_uom_qty),
-                                "uom_id": sale_line.product_uom.id,
-                                "move_id": move_id,
-                            },
+                    for move in moves:
+                        sale_line = sale_lines_to_return.filtered(
+                            lambda line, move=move: line.product_id == move.product_id
                         )
-                    )
+                        if sale_line:
+                            return_lines.append(
+                                (
+                                    0,
+                                    0,
+                                    {
+                                        "product_id": sale_line.product_id.id,
+                                        "quantity": abs(sale_line.product_uom_qty),
+                                        "uom_id": sale_line.product_uom.id,
+                                        "move_id": move.id,
+                                    },
+                                )
+                            )
                 record.order_return_wizard_lines = return_lines
 
     def create_returns(self):
         ReturnPicking = self.env["stock.return.picking"]
-        for wizard in self:
-            if not wizard.picking_id:
-                continue
-
+        for picking in self.picking_ids:
             return_picking = ReturnPicking.with_context(
-                active_id=wizard.picking_id.id, active_ids=[wizard.picking_id.id]
+                active_id=picking.id, active_ids=[picking.id]
             ).create(
                 {
                     "move_dest_exists": False,
-                    "original_location_id": wizard.picking_id.location_id.id,
-                    "location_id": wizard.picking_id.location_id.id,
-                    "picking_id": wizard.picking_id.id,
+                    "original_location_id": picking.location_id.id,
+                    "location_id": picking.location_id.id,
+                    "picking_id": picking.id,
                 }
             )
 
             return_picking._onchange_picking_id()
-            for return_line in wizard.order_return_wizard_lines:
+            for return_line in self.order_return_wizard_lines:
                 return_move = return_picking.product_return_moves.filtered(
-                    lambda m: m.product_id.id == return_line.product_id.id
+                    lambda m, return_line=return_line: m.product_id.id
+                    == return_line.product_id.id
                 )
                 if return_move:
                     return_move.quantity = return_line.quantity
 
-            products = wizard.order_return_wizard_lines.mapped("product_id")
+            products = self.order_return_wizard_lines.mapped("product_id")
             return_picking.product_return_moves.filtered(
-                lambda m: m.product_id.id not in products.ids
+                lambda m, products=products: m.product_id.id not in products.ids
             ).unlink()
 
-            return return_picking.create_returns()
+            return_picking.create_returns()
