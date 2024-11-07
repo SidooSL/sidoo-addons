@@ -5,13 +5,13 @@
 
 {
     "name": "Account Move Excel to JSON",
-    "version": "16.0.1.0.1",
+    "version": "17.0.1.0.1",
     "license": "AGPL-3",
     "category": "Accounting",
     "sequence": 1,
     "complexity": "easy",
-    "author": "Sidoo",
-    "depends": ["base", "account"],
+    "author": "Luis Jimenez, Sidoo Soluciones S.L.",
+    "depends": ["base", "account", "account_move_template"],
     "data": [
         "security/ir.model.access.csv",
         "wizard/wizard_excel_to_json_view.xml",
