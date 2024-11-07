@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_sync_selected_accounts" model="ir.actions.act_window">
+        <field name="name">Sync Selected Accounts</field>
+        <field name="res_model">wizard.account.company.sync</field>
+        <field name="binding_model_id" ref="account.model_account_account"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_account_ids': active_ids}</field>
+    </record>
+</odoo>
