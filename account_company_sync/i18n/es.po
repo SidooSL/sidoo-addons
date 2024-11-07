@@ -1,0 +1,114 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_company_sync
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-07 12:55+0000\n"
+"PO-Revision-Date: 2024-11-07 12:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_company_sync
+#: model:ir.model,name:account_company_sync.model_account_account
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__account_ids
+msgid "Account"
+msgstr "Cuentas"
+
+#. module: account_company_sync
+#: model_terms:ir.ui.view,arch_db:account_company_sync.view_wizard_account_company_sync_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__company_ids
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__id
+msgid "ID"
+msgstr ""
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: account_company_sync
+#: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: account_company_sync
+#. odoo-python
+#: code:addons/account_company_sync/wizard/wizard_account_company_sync.py:0
+#, python-format
+msgid "Please select accounts to sync"
+msgstr "Seleccione las cuentas a sincronizar"
+
+#. module: account_company_sync
+#: model_terms:ir.ui.view,arch_db:account_company_sync.view_wizard_account_company_sync_form
+msgid "Sync"
+msgstr "Sincronizar"
+
+#. module: account_company_sync
+#: model:ir.actions.act_window,name:account_company_sync.action_wizard_account_company_sync
+#: model:ir.ui.menu,name:account_company_sync.wizard_account_company_sync_menu
+msgid "Sync Accounts to Company"
+msgstr "Sincronizar cuentas entre compañías"
+
+#. module: account_company_sync
+#: model:ir.actions.act_window,name:account_company_sync.action_sync_selected_accounts
+msgid "Sync Selected Accounts"
+msgstr "Sincronizar cuentas seleccionadas"
+
+#. module: account_company_sync
+#: model_terms:ir.ui.view,arch_db:account_company_sync.view_wizard_account_company_sync_form
+msgid ""
+"<strong>This wizard will sync the selected accounts to the rest of the "
+"companies if they are not already created.</strong>"
+msgstr ""
+"<strong>Este asistente sincronizará las cuentas seleccionadas al resto de companñías si"
+" estas aún no se han creado.</strong>"
+
+#. module: account_company_sync
+#: model_terms:ir.ui.view,arch_db:account_company_sync.view_wizard_account_company_sync_form
+msgid "Wizard Account Company Sync"
+msgstr "Asistente sincronizar cuentas compañías"
+
+#. module: account_company_sync
+#: model:ir.ui.menu,name:account_company_sync.wizard_account_company_sync_menu_main
+msgid "Wizard Account Sync"
+msgstr "Asistente Sincronizar cuentas"
+
+#. module: account_company_sync
+#: model:ir.model,name:account_company_sync.model_wizard_account_company_sync
+msgid "Wizard to sync account in companies"
+msgstr "Asistente para sincronizar cuentas entre compañías"
