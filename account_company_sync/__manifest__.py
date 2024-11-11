@@ -11,11 +11,19 @@
     "sequence": 1,
     "complexity": "easy",
     "author": "Luis Jimenez, Sidoo Soluciones S.L.",
-    "depends": ["base", "account"],
+    "depends": ["base", "web", "account", "queue_job"],
     "data": [
         "security/ir.model.access.csv",
+        "data/account_account_channel.xml",
+        "data/account_account_job_function.xml",
         "views/account_account_views.xml",
         "wizard/wizard_account_company_sync_views.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "account_company_sync/static/src/*/*.js",
+            "account_company_sync/static/src/*/*.xml",
+        ],
+    },
     "installable": True,
 }

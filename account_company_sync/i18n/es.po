@@ -27,6 +27,13 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: account_company_sync
+#. odoo-javascript
+#: code:addons/account_company_sync/static/src/list_view/account_account_list_view.js:0
+#, python-format
+msgid "Chart of Acconts correctly queue"
+msgstr "Plan contable encolado correctamente"
+
+#. module: account_company_sync
 #: model:ir.model.fields,field_description:account_company_sync.field_wizard_account_company_sync__company_id
 msgid "Company"
 msgstr "Compañía"
@@ -72,6 +79,14 @@ msgstr ""
 #, python-format
 msgid "Please select accounts to sync"
 msgstr "Seleccione las cuentas a sincronizar"
+
+#. module: account_company_sync
+#. odoo-javascript
+#: code:addons/account_company_sync/static/src/list_view/account_account_list_view.xml:0
+#: model:ir.actions.server,name:account_company_sync.action_queue_sync_all_accounts
+#, python-format
+msgid "Queue Sync All Accounts"
+msgstr "Encolar plan contable"
 
 #. module: account_company_sync
 #: model_terms:ir.ui.view,arch_db:account_company_sync.view_wizard_account_company_sync_form

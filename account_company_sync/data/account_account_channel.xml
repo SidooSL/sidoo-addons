@@ -1,0 +1,6 @@
+<odoo>
+    <record id="channel_account_company_sync" model="queue.job.channel">
+        <field name="name">account_company_sync</field>
+        <field name="parent_id" ref="queue_job.channel_root" />
+    </record>
+</odoo>
