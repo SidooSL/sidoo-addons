@@ -13,6 +13,16 @@
         </field>
     </record>
 
+    <record id="view_account_account_search_inherit" model="ir.ui.view">
+        <field name="model">account.account</field>
+        <field name='inherit_id' ref='account.view_account_search'/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='activeacc']" position="after">
+                <filter string="Archive Account" name="archiveacc" domain="[('active', '=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+
     <record id="action_sync_selected_accounts" model="ir.actions.act_window">
         <field name="name">Sync Selected Accounts</field>
         <field name="res_model">wizard.account.company.sync</field>
