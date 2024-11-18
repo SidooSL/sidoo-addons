@@ -86,7 +86,7 @@ class AccountAccount(models.Model):
     def search_account_and_duplicate(self, company_id):
         account = self.sudo().search(
             [
-                ("company_id", "=", company_id),
+                ("company_id", "=", company_id.id),
                 ("code", "=", self.code),
                 ("active", "in", [True, False]),
             ],
@@ -94,7 +94,20 @@ class AccountAccount(models.Model):
         )
         if not account:
             account = self.sudo().copy(
-                {"company_id": company_id, "code": self.code, "name": self.name}
+                {
+                    "company_id": company_id,
+                    "code": self.code,
+                    "name": self.name,
+                    "asset_profile_id": self.find_target_record(
+                        "asset_profile_id", company_id
+                    ),
+                    "group_id": self.find_target_record("group_id", company_id),
+                    "tax_ids": self.find_target_record("tax_ids", company_id),
+                    "tag_ids": self.find_target_record("tag_ids", company_id),
+                    "allowed_journal_ids": self.find_target_record(
+                        "allowed_journal_ids", company_id
+                    ),
+                }
             )
         else:
             self.compare_and_update_fields(account)
@@ -103,7 +116,7 @@ class AccountAccount(models.Model):
         for record in self:
             companies = company_ids or record.get_company_to_sync()
             for company in companies:
-                record.search_account_and_duplicate(company.id)
+                record.search_account_and_duplicate(company)
 
     def sync_accounts_across_companies(self):
         companies = self.env["res.company"].search(
@@ -122,7 +135,7 @@ class AccountAccount(models.Model):
             for account in accounts:
                 for target_company in companies:
                     if target_company.id != company_id:
-                        account.search_account_and_duplicate(target_company.id)
+                        account.search_account_and_duplicate(target_company)
 
     def enqueue_sync_accounts_across_companies(self):
         self.with_delay().sync_accounts_across_companies()
