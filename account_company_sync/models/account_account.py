@@ -95,7 +95,7 @@ class AccountAccount(models.Model):
         if not account:
             account = self.sudo().copy(
                 {
-                    "company_id": company_id,
+                    "company_id": company_id.id,
                     "code": self.code,
                     "name": self.name,
                     "asset_profile_id": self.find_target_record(
