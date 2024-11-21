@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+partner_industry_edit_group.total_access_partner_industry,res_partner_industry group_can_create_partner_industry,base.model_res_partner_industry,partner_industry_edit_group.group_can_create_activity_industry,1,1,1,1
