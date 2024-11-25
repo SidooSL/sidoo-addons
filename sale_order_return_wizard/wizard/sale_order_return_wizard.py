@@ -38,7 +38,10 @@ class SaleReturnWizard(models.TransientModel):
     )
 
     picking_ids = fields.Many2many(
-        comodel_name="stock.picking", compute="_compute_data", string="Picking"
+        comodel_name="stock.picking",
+        compute="_compute_data",
+        string="Picking",
+        readonly=False,
     )
 
     @api.depends("order_id", "order_id.order_line", "order_id.picking_ids")

@@ -16,6 +16,7 @@
         "security/ir.model.access.csv",
         "views/sale_order_view.xml",
         "wizard/sale_order_return_wizard_view.xml",
+        "wizard/stock_picking_return_views.xml",
     ],
     "installable": True,
 }
