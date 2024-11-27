@@ -1,0 +1,65 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_product_return
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-26 15:47+0000\n"
+"PO-Revision-Date: 2024-11-26 15:47+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_product_return
+#: model:ir.model.fields,field_description:stock_product_return.field_product_template__display_name
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: stock_product_return
+#: model:ir.model.fields,field_description:stock_product_return.field_product_template__id
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_move_line__id
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_picking__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: stock_product_return
+#: model:ir.model.fields,field_description:stock_product_return.field_product_product__is_returnable
+#: model:ir.model.fields,field_description:stock_product_return.field_product_template__is_returnable
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_move_line__is_returnable
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_picking__is_returnable
+msgid "Is Returnable"
+msgstr "Es devolución"
+
+#. module: stock_product_return
+#: model:ir.model.fields,field_description:stock_product_return.field_product_template____last_update
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_move_line____last_update
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_picking____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: stock_product_return
+#: model:ir.model,name:stock_product_return.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de Producto (Stock Move Line)"
+
+#. module: stock_product_return
+#: model:ir.model,name:stock_product_return.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: stock_product_return
+#: model:ir.model,name:stock_product_return.model_stock_picking
+msgid "Transfer"
+msgstr "Albarán"
+
+#. module: stock_product_return
+#: model:ir.model.fields,field_description:stock_product_return.field_stock_picking__warning_message
+msgid "Warning Message"
+msgstr "Mensaje de aviso"

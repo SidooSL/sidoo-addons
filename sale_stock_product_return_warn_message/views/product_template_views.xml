@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_form_view_returnable" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.returnable</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_ok']/.." position="inside">
+                <div>
+                    <field name="is_returnable" 
+                        attrs="{'invisible': [('type', '!=', 'consu')]}"/>
+                    <label for="is_returnable" 
+                        attrs="{'invisible': [('type', '!=', 'consu')]}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
