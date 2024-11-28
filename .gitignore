@@ -4,7 +4,7 @@ odoo_backups/
 postgresql_data/
 compose.yml
 Dockerfile
-.gitlab-ci.yml
+# .gitlab-ci.yml
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
