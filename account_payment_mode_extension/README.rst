@@ -1,5 +1,5 @@
 ===============================
-Account Payment Order Extension
+Account Payment Mode Extension
 ===============================
 
 ..
