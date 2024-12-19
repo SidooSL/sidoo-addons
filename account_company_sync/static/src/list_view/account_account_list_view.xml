@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="account_company_sync.AccountListView.Buttons" t-inherit="web.ListView.Buttons">
-        <!-- <xpath expr="//t[contains(@t-if, 'model.root.editedRecord')]" position="after">
+        <xpath expr="//t[contains(@t-if, 'editedRecord')]" position="after">
             <button type="button" class="btn btn-primary o_list_button_queue_sync" t-on-click="SyncAccounts">
                 Queue Sync All Accounts
             </button>
-        </xpath> -->
+        </xpath>
     </t>
 </templates>
