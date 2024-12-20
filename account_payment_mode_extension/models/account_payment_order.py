@@ -6,8 +6,12 @@ class AccountPaymentOrder(models.Model):
 
     def draft2open(self):
         res = super().draft2open()
+        if self.payment_type == "inbound":
+            xml_id = f"account.{self.company_id.id}_account_common_4312"
+        else:
+            xml_id = f"account.{self.company_id.id}_account_common_411"
         account_id = self.env.ref(
-            f"account.{self.company_id.id}_account_common_4312",
+            xml_id,
             raise_if_not_found=False,
         )
         for order in self:
