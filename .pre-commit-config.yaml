@@ -68,4 +68,4 @@ repos:
   rev: v4.5.0
   hooks:
     - id: no-commit-to-branch
-      args: ['--branch', '17.0']
+      args: ['--branch', '18.0']
