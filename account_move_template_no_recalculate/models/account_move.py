@@ -24,7 +24,7 @@ class AccountMove(models.Model):
                     for vals in vals_list:
                         self._sanitize_vals(vals)
                     moves = super().create(vals_list)
-                for move, vals in zip(moves, vals_list):
+                for move, vals in zip(moves, vals_list):  # noqa: B905
                     if "tax_totals" in vals:
                         move.tax_totals = vals["tax_totals"]
             return moves

@@ -18,19 +18,19 @@
 #
 ###############################################################################
 {
-    'name': 'Partner Industry Edit Group',
-    'summary': 'Add a group to CRUD the partner industry, not only the admin',
-    'author': 'Jorge Quinteros, Sidoo Soluciones, S.L.',
-    'website': 'https://sidoo.es/',
-    'license': 'AGPL-3',
-    'category': 'Tools',
-    'version': '16.0.1.0.1',
-    'depends': [
-        'base',
+    "name": "Partner Industry Edit Group",
+    "summary": "Add a group to CRUD the partner industry, not only the admin",
+    "author": "Jorge Quinteros, Sidoo Soluciones, S.L.",
+    "website": "https://sidoo.es/",
+    "license": "AGPL-3",
+    "category": "Tools",
+    "version": "16.0.1.0.1",
+    "depends": [
+        "base",
     ],
-    'data': [
-        'security/security.xml',
-        'security/ir.model.access.csv',
-        'views/res_partner_industry_views.xml',
+    "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        "views/res_partner_industry_views.xml",
     ],
 }
