@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="menu_sectors_activity_inherit" model="ir.ui.menu">
+            <field name="name">menu_sectors_activity</field>
+            <field name="groups_id" eval="[(6, 0, [ref('partner_industry_edit_group.group_can_create_activity_industry')])]"/>
+        </record>
+    </data>
+</odoo>
