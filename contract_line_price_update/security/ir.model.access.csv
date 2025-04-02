@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_contract_line_update_wizard_group,Contract Line Update Wizard,contract_line_price_update.model_contract_line_update_wizard,contract_line_price_update.group_contract_price_update,1,1,1,1

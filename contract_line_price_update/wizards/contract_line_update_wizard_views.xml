@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_contract_line_update_wizard_form" model="ir.ui.view">
+        <field name="name">contract.line.update.wizard.form</field>
+        <field name="model">contract.line.update.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update Contract Line Prices">
+                <div class="alert alert-warning warning_icon" role="alert">
+                    <span class="fa fa-exclamation-triangle fa-2x"/>
+                    <strong> Warning:</strong> This action is <strong>irreversible</strong> and will apply the indicated factor to the selected contract lines.
+                    <br/><strong>Be sure to review the changes before confirming.</strong>
+                </div>
+                <group>
+                    <group name="right_fields">
+                        <field name="contract_line_ids" widget="many2many_tags" invisible="1" />
+                        <field name="factor" />
+                    </group>
+                    <group>
+                        <field name="output_type" widget="radio" />
+                    </group>
+                </group>
+                <footer>
+                    <div class="d-flex align-items-center">
+                        <button name="update_price"
+                            type="object"
+                            class="btn-primary"
+                            style="vertical-align: middle;"
+                            confirm="¿Are you sure you want to update the prices of the selected contract lines?"
+                        >
+                            <span>Apply To </span>
+                            <field name="count_line" />
+                            <span> line(s)</span>
+                        </button>
+
+                        <span style="margin: 0 10px; vertical-align: middle;">or</span>
+
+                        <button string="Cancel" class="btn-secondary" special="cancel"
+                            style="vertical-align: middle;" />
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
