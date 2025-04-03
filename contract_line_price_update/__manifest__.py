@@ -34,5 +34,4 @@
         "views/contract_views.xml",
         "views/contract_line_views.xml",
     ],
-
 }

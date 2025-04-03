@@ -29,5 +29,4 @@
     "data": [
         "views/contract_line_views.xml",
     ],
-
 }
