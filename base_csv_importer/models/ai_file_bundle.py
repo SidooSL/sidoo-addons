@@ -178,8 +178,8 @@ class AIFileBundle(models.Model):
                     if len(headers) > len(expected_columns) - 1:
                         raise ValidationError(
                             _(
-                                "El archivo {} contiene {} columnas. El máximo está en {}."
-                            ).format(file_name, len(headers), _COLS_TO_IMPORT)
+                                f"El archivo {file_name} contiene {len(headers)} columnas. El máximo está en {_COLS_TO_IMPORT}."
+                            )
                         )
                     temp_data = io.StringIO()
                     writer = csv.writer(

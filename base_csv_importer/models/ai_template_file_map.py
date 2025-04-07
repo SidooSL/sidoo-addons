@@ -594,7 +594,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col2 Lambda",
     )
 
     col3_type = fields.Selection(
@@ -618,7 +617,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col3 Lambda",
     )
 
     col4_type = fields.Selection(
@@ -642,7 +640,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col4 Lambda",
     )
 
     col5_type = fields.Selection(
@@ -666,7 +663,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col5 Lambda",
     )
 
     col6_type = fields.Selection(
@@ -690,7 +686,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col6 Lambda",
     )
 
     col7_type = fields.Selection(
@@ -714,7 +709,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col7 Lambda",
     )
 
     col8_type = fields.Selection(
@@ -738,7 +732,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col8 Lambda",
     )
 
     col9_type = fields.Selection(
@@ -762,7 +755,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col9 Lambda",
     )
 
     col10_type = fields.Selection(
@@ -786,7 +778,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col10 Lambda",
     )
 
     col11_type = fields.Selection(
@@ -810,7 +801,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col11 Lambda",
     )
 
     col12_type = fields.Selection(
@@ -834,7 +824,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col12 Lambda",
     )
 
     col13_type = fields.Selection(
@@ -858,7 +847,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col13 Lambda",
     )
 
     col14_type = fields.Selection(
@@ -882,7 +870,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col14 Lambda",
     )
 
     col15_type = fields.Selection(
@@ -906,7 +893,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col15 Lambda",
     )
 
     col16_type = fields.Selection(
@@ -930,7 +916,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col16 Lambda",
     )
 
     col17_type = fields.Selection(
@@ -954,7 +939,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col17 Lambda",
     )
 
     col18_type = fields.Selection(
@@ -978,7 +962,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col18 Lambda",
     )
 
     col19_type = fields.Selection(
@@ -1002,7 +985,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col19 Lambda",
     )
 
     col20_type = fields.Selection(
@@ -1026,7 +1008,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col20 Lambda",
     )
 
     col21_type = fields.Selection(
@@ -1050,7 +1031,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col21 Lambda",
     )
 
     col22_type = fields.Selection(
@@ -1074,7 +1054,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col22 Lambda",
     )
 
     col23_type = fields.Selection(
@@ -1098,7 +1077,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col23 Lambda",
     )
 
     col24_type = fields.Selection(
@@ -1122,7 +1100,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col24 Lambda",
     )
 
     col25_type = fields.Selection(
@@ -1146,7 +1123,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col25 Lambda",
     )
 
     col26_type = fields.Selection(
@@ -1170,7 +1146,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col26 Lambda",
     )
 
     col27_type = fields.Selection(
@@ -1194,7 +1169,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col27 Lambda",
     )
 
     col28_type = fields.Selection(
@@ -1218,7 +1192,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col28 Lambda",
     )
 
     col29_type = fields.Selection(
@@ -1242,7 +1215,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col29 Lambda",
     )
 
     col30_type = fields.Selection(
@@ -1266,7 +1238,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col30 Lambda",
     )
 
     col31_type = fields.Selection(
@@ -1290,7 +1261,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col31 Lambda",
     )
 
     col32_type = fields.Selection(
@@ -1314,7 +1284,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col32 Lambda",
     )
 
     col33_type = fields.Selection(
@@ -1338,7 +1307,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col33 Lambda",
     )
 
     col34_type = fields.Selection(
@@ -1362,7 +1330,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col34 Lambda",
     )
 
     col35_type = fields.Selection(
@@ -1386,7 +1353,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col35 Lambda",
     )
 
     col36_type = fields.Selection(
@@ -1410,7 +1376,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col36 Lambda",
     )
 
     col37_type = fields.Selection(
@@ -1434,7 +1399,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col37 Lambda",
     )
 
     col38_type = fields.Selection(
@@ -1458,7 +1422,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col38 Lambda",
     )
 
     col39_type = fields.Selection(
@@ -1482,7 +1445,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col39 Lambda",
     )
 
     col40_type = fields.Selection(
@@ -1506,7 +1468,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col40 Lambda",
     )
 
     col41_type = fields.Selection(
@@ -1530,7 +1491,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col41 Lambda",
     )
 
     col42_type = fields.Selection(
@@ -1554,7 +1514,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col42 Lambda",
     )
 
     col43_type = fields.Selection(
@@ -1578,7 +1537,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col43 Lambda",
     )
 
     col44_type = fields.Selection(
@@ -1602,7 +1560,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col44 Lambda",
     )
 
     col45_type = fields.Selection(
@@ -1626,7 +1583,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col45 Lambda",
     )
 
     col46_type = fields.Selection(
@@ -1650,7 +1606,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col46 Lambda",
     )
 
     col47_type = fields.Selection(
@@ -1674,7 +1629,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col47 Lambda",
     )
 
     col48_type = fields.Selection(
@@ -1698,7 +1652,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col48 Lambda",
     )
 
     col49_type = fields.Selection(
@@ -1722,7 +1675,6 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col49 Lambda",
     )
 
     col50_type = fields.Selection(
@@ -1746,5 +1698,4 @@ class AITemplateFileMap(models.Model):
             ("integer", "Entero"),
             ("date", "Fecha"),
         ],
-        string="Col50 Lambda",
     )

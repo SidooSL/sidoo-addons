@@ -10,7 +10,6 @@ class AITemplateFileMap(models.Model):
     _description = "After Import actions by model"
 
     sequence = fields.Integer(
-        string="Sequence",
         default=10,
         help="Orden de ejecución de las acciones",
     )
