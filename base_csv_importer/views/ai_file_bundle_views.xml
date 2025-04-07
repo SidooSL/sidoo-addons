@@ -1,0 +1,102 @@
+<odoo>
+    <record id="ai_file_bundle_tree" model="ir.ui.view">
+        <field name="name">ai.file.bundle.tree</field>
+        <field name="model">ai.file.bundle</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="type_id"/>
+                <field name="job_record_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="ai_file_bundle_form" model="ir.ui.view">
+        <field name="name">ai.file.bundle.form</field>
+        <field name="model">ai.file.bundle</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="import_bundle" string="Importar" type="object" invisible="state != 'draft'"/>
+                    <button name="button_draft" string="Eliminar y poner en borrador" type="object" invisible="state == 'draft'"/>
+                    <button name="queue_files" string="Encolar ficheros" type="object" invisible="state != 'confirm'"/>
+                    <button name="check_status" string="Comprobar estado" type="object" invisible="state in ('draft', 'confirm')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <div class="alert alert-danger" role="alert" invisible="state != 'done_error'">
+                    <strong>¡Atención!</strong>Hubo errores al procesar. Revise la pestaña Errores y Lotes para más detalles.
+                </div>
+                <div class="alert alert-info" role="alert">
+                    <a role='button' href="/base_csv_importer/download_instructions" target="_blank" class="btn btn-primary">
+                        <i class="fa fa-download"/> Descargar instrucciones
+                    </a>
+                </div>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="open_records"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-database"
+                            invisible="not record_count"
+                        >
+                            <field
+                                name="record_count"
+                                widget="statinfo"
+                                string="Registros"
+                            />
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="type_id"/>
+                        <field name="job_record_count"/>
+                        <field name="state"/>
+                        <field name="bundle_file" widget="binary" readonly="state != 'draft'"/>
+                        <field name="bundle_file_name" readonly="state != 'draft'"/>
+                    </group>
+                    <notebook>
+                        <page string="Errores">
+                            <field name="error_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="file_id"/>
+                                    <field name="batch_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Ficheros">
+                            <field name="file_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="template_id"/>
+                                    <field name="record_ids"/>
+                                    <field name="skip"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Lotes">
+                            <field name="batch_ids">
+                            <list
+                                    decoration-danger="job_state == 'failed'"
+                                    decoration-info="job_state == 'done'"
+                                    decoration-warning="job_state == 'started'"
+                                    decoration-primary="job_state == 'enqueued'"
+                                    decoration-secondary="job_state == 'pending'"
+                                    decoration-success="job_state == 'wait_dependencies'"
+                                >
+                                    <field name="id"/>
+                                    <field name="file_id"/>
+                                    <field name="job_id"/>
+                                    <field name="job_state"/>
+                                    <field name="record_ids" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,86 @@
+<odoo>
+    <record id="base_csv_importer.ai_template_file_map_contacts" model="ai.template.file.map">
+        <field name="model_id" ref="base.model_res_partner"/>
+
+        <field name="col2_type">direct</field>
+        <field name="col2_direct_name">is_company</field>
+        <field name="col2_lambda">boolean</field>
+
+        <field name="col3_type">direct</field>
+        <field name="col3_direct_name">type</field>
+        <field name="col3_lambda">direct_lowered</field>
+
+        <field name="col4_type">direct</field>
+        <field name="col4_direct_name">ref</field>
+
+        <field name="col5_type">direct</field>
+        <field name="col5_direct_name">name</field>
+
+        <field name="col6_type">direct</field>
+        <field name="col6_direct_name">vat</field>
+
+        <field name="col7_type">direct</field>
+        <field name="col7_direct_name">email</field>
+
+        <field name="col8_type">direct</field>
+        <field name="col8_direct_name">street</field>
+
+        <field name="col9_type">direct</field>
+        <field name="col9_direct_name">street2</field>
+
+        <field name="col10_type">direct</field>
+        <field name="col10_direct_name">zip</field>
+
+        <field name="col11_type">direct</field>
+        <field name="col11_direct_name">phone</field>
+
+        <field name="col12_type">direct</field>
+        <field name="col12_direct_name">mobile</field>
+
+        <field name="col13_type">direct</field>
+        <field name="col13_direct_name">city</field>
+
+        <field name="col14_type">relational</field>
+        <field name="col14_direct_name">country</field>
+        <field name="col14_related_field_name">country_id</field>
+        <field name="col14_related_model_name">res.country</field>
+        <field name="col14_lambda">get_id_by_name</field>
+
+        <field name="col15_type">relational</field>
+        <field name="col15_direct_name">customer_payment_mode</field>
+        <field name="col15_related_field_name">property_payment_term_id</field>
+        <field name="col15_related_model_name">account.payment.term</field>
+        <field name="col15_lambda">get_id_by_name</field>
+
+        <field name="col16_type">relational</field>
+        <field name="col16_direct_name">supplier_payment_mode</field>
+        <field name="col16_related_field_name">property_supplier_payment_term_id</field>
+        <field name="col16_related_model_name">account.payment.term</field>
+        <field name="col16_lambda">get_id_by_name</field>
+
+        <field name="col17_type">relational</field>
+        <field name="col17_direct_name">customer_payment_term</field>
+        <field name="col17_related_field_name">property_inbound_payment_method_line_id</field>
+        <field name="col17_related_model_name">account.payment.method.line</field>
+        <field name="col17_lambda">get_id_by_name</field>
+
+        <field name="col18_type">relational</field>
+        <field name="col18_direct_name">supplier_payment_term</field>
+        <field name="col18_related_field_name">property_outbound_payment_method_line_id</field>
+        <field name="col18_related_model_name">account.payment.method.line</field>
+        <field name="col18_lambda">get_id_by_name</field>
+
+        <field name="col19_type">relational</field>
+        <field name="col19_direct_name">account_position</field>
+        <field name="col19_related_field_name">property_account_position_id</field>
+        <field name="col19_related_model_name">account.fiscal.position</field>
+        <field name="col19_lambda">get_id_by_name</field>
+
+        <field name="col20_type">relational</field>
+        <field name="col20_direct_name">parent</field>
+        <field name="col20_related_field_name">parent_id</field>
+        <field name="col20_related_model_name">res.partner</field>
+        <field name="col20_lambda">get_id_by_name</field>
+
+    </record>
+</odoo>

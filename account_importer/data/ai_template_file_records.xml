@@ -1,0 +1,28 @@
+<odoo>
+    <record id="ai_template_file_bank_accounts" model="ai.template.file">
+        <field name="name">bankaccounts</field>
+        <field name="type_id" ref="base_csv_importer.ai_import_type_basic"/>
+        <field name="mapper_id" ref="ai_template_file_map_bank_accounts"/>
+        <field name="sequence">40</field>
+    </record>
+    <record id="ai_template_file_account_moves" model="ai.template.file">
+        <field name="name">accountmoves</field>
+        <field name="type_id" ref="base_csv_importer.ai_import_type_basic"/>
+        <field name="mapper_id" ref="ai_template_file_map_account_moves"/>
+        <field name="sequence">50</field>
+    </record>
+
+    <record id="ai_template_file_payments" model="ai.template.file">
+        <field name="name">payments</field>
+        <field name="type_id" ref="base_csv_importer.ai_import_type_basic"/>
+        <field name="mapper_id" ref="ai_template_file_map_payments"/>
+        <field name="sequence">60</field>
+    </record>
+
+    <record id="ai_template_file_invoices" model="ai.template.file">
+        <field name="name">invoices</field>
+        <field name="type_id" ref="base_csv_importer.ai_import_type_basic"/>
+        <field name="mapper_id" ref="ai_template_file_map_invoices"/>
+        <field name="sequence">70</field>
+    </record>
+</odoo>

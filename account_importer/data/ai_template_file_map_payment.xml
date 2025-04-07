@@ -1,0 +1,67 @@
+<odoo>
+    <record id="account_importer.ai_template_file_map_payments" model="ai.template.file.map">
+        <field name="model_id" ref="account.model_account_payment"/>
+
+        <field name="col2_type">direct</field>
+        <field name="col2_direct_name">name</field>
+
+        <field name="col3_type">direct</field>
+        <field name="col3_direct_name">payment_type</field>
+
+        <field name="col4_type">relational</field>
+        <field name="col4_direct_name">partner</field>
+        <field name="col4_related_field_name">partner_id</field>
+        <field name="col4_related_model_name">res.partner</field>
+        <field name="col4_lambda">get_id_by_ref_required</field>
+
+        <field name="col5_type">direct</field>
+        <field name="col5_direct_name">amount</field>
+        <field name="col5_lambda">float</field>
+
+        <field name="col6_type">direct</field>
+        <field name="col6_direct_name">date</field>
+        <field name="col6_lambda">date</field>
+
+        <field name="col7_type">direct</field>
+        <field name="col7_direct_name">memo</field>
+
+        <field name="col8_type">relational</field>
+        <field name="col8_direct_name">journal</field>
+        <field name="col8_related_field_name">journal_id</field>
+        <field name="col8_related_model_name">account.journal</field>
+        <field name="col8_lambda">get_id_by_name</field>
+
+        <field name="col9_type">relational</field>
+        <field name="col9_direct_name">payment_method</field>
+        <field name="col9_related_field_name">payment_method_line_id</field>
+        <field name="col9_related_model_name">account.payment.method.line</field>
+        <field name="col9_lambda">get_id_by_name</field>
+
+        <field name="col10_type">relational</field>
+        <field name="col10_direct_name">bank_account</field>
+        <field name="col10_related_field_name">partner_bank_id</field>
+        <field name="col10_related_model_name">res.partner.bank</field>
+        <field name="col10_lambda">get_id_by_name</field>
+
+        <field name="col11_type">relational</field>
+        <field name="col11_direct_name">account_move</field>
+        <field name="col11_related_field_name">move_id</field>
+        <field name="col11_related_model_name">account.move</field>
+        <field name="col11_lambda">get_id_by_ref</field>
+
+    </record>
+
+    <record id="account_importer.ai_template_file_map_payments_link_move" model="ai.template.model.actions">
+        <field name="mapper_id" ref="account_importer.ai_template_file_map_payments"/>
+        <field name="action">link_move</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="account_importer.ai_template_file_map_payments_action_validate" model="ai.template.model.actions">
+        <field name="mapper_id" ref="account_importer.ai_template_file_map_payments"/>
+        <field name="action">action_validate</field>
+        <field name="sequence">20</field>
+    </record>
+
+
+</odoo>
