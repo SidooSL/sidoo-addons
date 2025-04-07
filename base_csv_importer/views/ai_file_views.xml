@@ -1,0 +1,47 @@
+<odoo>
+    <record id="view_ai_file_form" model="ir.ui.view">
+        <field name="name">ai.file.form</field>
+        <field name="model">ai.file</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="template_id"/>
+                        <field name="queued"/>
+                        <field name="skip"/>
+                    </group>
+                    <notebook>
+                        <page string="Errores">
+                            <field name="error_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="file_id"/>
+                                    <field name="batch_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Lotes">
+                            <field name="batch_ids">
+                            <tree
+                                    decoration-danger="job_state == 'failed'"
+                                    decoration-info="job_state == 'done'"
+                                    decoration-muted="job_state == 'started'"
+                                    decoration-primary="job_state == 'enqueued'"
+                                    decoration-secondary="job_state == 'pending'"
+                                    decoration-success="job_state == 'wait_dependencies'"
+                                >
+                                    <field name="id"/>
+                                    <field name="job_id"/>
+                                    <field name="job_id"/>
+                                    <field name="job_state"/>
+                                    <field name="record_ids" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

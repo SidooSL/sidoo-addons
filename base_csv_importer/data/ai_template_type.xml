@@ -1,0 +1,6 @@
+<odoo>
+    <record id="ai_import_type_basic" model="ai.import.type">
+        <field name="name">Basica</field>
+    </record>
+
+</odoo>

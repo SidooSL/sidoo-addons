@@ -1,0 +1,52 @@
+<odoo>
+    <record id="base_csv_importer.ai_template_file_map_products_templates" model="ai.template.file.map">
+        <field name="model_id" ref="product.model_product_template"/>
+
+        <field name="col2_type">direct</field>
+        <field name="col2_direct_name">name</field>
+
+        <field name="col3_type">direct</field>
+        <field name="col3_direct_name">standard_price</field>
+
+        <field name="col4_type">direct</field>
+        <field name="col4_direct_name">barcode</field>
+
+        <field name="col5_type">direct</field>
+        <field name="col5_direct_name">list_price</field>
+        <field name="col5_lambda">float</field>
+
+        <field name="col6_type">direct</field>
+        <field name="col6_direct_name">default_code</field>
+
+        <field name="col7_type">relational</field>
+        <field name="col7_direct_name">uom</field>
+        <field name="col7_related_field_name">uom_id</field>
+        <field name="col7_related_model_name">uom.uom</field>
+        <field name="col7_lambda">get_id_by_ref</field>
+
+        <field name="col8_type">relational</field>
+        <field name="col8_direct_name">category</field>
+        <field name="col8_related_field_name">categ_id</field>
+        <field name="col8_related_model_name">product.category</field>
+        <field name="col8_lambda">get_id_by_name</field>
+
+        <field name="col9_type">direct</field>
+        <field name="col9_direct_name">description</field>
+
+        <field name="col10_type">relational</field>
+        <field name="col10_direct_name">sale_taxes</field>
+        <field name="col10_related_field_name">taxes_id</field>
+        <field name="col10_related_model_name">account.tax</field>
+        <field name="col10_lambda">get_ids_by_ref</field>
+
+        <field name="col11_type">relational</field>
+        <field name="col11_direct_name">supplier_taxes</field>
+        <field name="col11_related_field_name">supplier_taxes_id</field>
+        <field name="col11_related_model_name">account.tax</field>
+        <field name="col11_lambda">get_ids_by_ref</field>
+
+        <field name="col12_type">direct</field>
+        <field name="col12_direct_name">type</field>
+
+    </record>
+</odoo>

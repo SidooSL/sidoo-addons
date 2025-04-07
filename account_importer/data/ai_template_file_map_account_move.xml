@@ -1,0 +1,55 @@
+<odoo>
+    <record id="account_importer.ai_template_file_map_account_moves" model="ai.template.file.map">
+        <field name="model_id" ref="account.model_account_move"/>
+
+        <field name="col2_type">direct</field>
+        <field name="col2_direct_name">name</field>
+
+        <field name="col3_type">direct</field>
+        <field name="col3_direct_name">date</field>
+        <field name="col3_lambda">date</field>
+
+        <field name="col4_type">direct</field>
+        <field name="col4_direct_name">ref</field>
+
+        <field name="col5_type">direct</field>
+        <field name="col5_direct_name">narration</field>
+
+        <field name="col6_type">relational</field>
+        <field name="col6_direct_name">journal</field>
+        <field name="col6_related_field_name">journal_id</field>
+        <field name="col6_related_model_name">account.journal</field>
+        <field name="col6_lambda">get_id_by_name</field>
+
+        <field name="col7_type">direct</field>
+        <field name="col7_direct_name">line_ids/id</field>
+
+        <field name="col8_type">direct</field>
+        <field name="col8_direct_name">line_ids/name</field>
+
+        <field name="col9_type">direct</field>
+        <field name="col9_direct_name">line_ids/debit</field>
+        <field name="col9_lambda">float</field>
+
+        <field name="col10_type">direct</field>
+        <field name="col10_direct_name">line_ids/credit</field>
+        <field name="col10_lambda">float</field>
+
+        <field name="col11_type">direct</field>
+        <field name="col11_direct_name">line_ids/date_maturity</field>
+
+        <field name="col12_type">direct</field>
+        <field name="col12_direct_name">line_ids/ref</field>
+
+        <field name="col13_type">direct</field>
+        <field name="col13_direct_name">line_ids/account_id</field>
+        <field name="col13_lambda">get_id_by_ref_required</field>
+
+    </record>
+
+    <record id="account_importer.ai_template_file_account_move_action_post" model="ai.template.model.actions">
+        <field name="mapper_id" ref="account_importer.ai_template_file_map_account_moves"/>
+        <field name="action">action_post</field>
+        <field name="sequence">10</field>
+    </record>
+</odoo>

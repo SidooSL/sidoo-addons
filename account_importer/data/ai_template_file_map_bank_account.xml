@@ -1,0 +1,31 @@
+<odoo>
+    <record id="account_importer.ai_template_file_map_bank_accounts" model="ai.template.file.map">
+        <field name="model_id" ref="base.model_res_partner_bank"/>
+
+        <field name="col2_type">direct</field>
+        <field name="col2_direct_name">acc_number</field>
+
+        <field name="col3_type">relational</field>
+        <field name="col3_direct_name">bank</field>
+        <field name="col3_related_field_name">bank_id</field>
+        <field name="col3_related_model_name">res.bank</field>
+        <field name="col3_lambda">get_id_by_name</field>
+
+        <field name="col4_type">relational</field>
+        <field name="col4_direct_name">partner</field>
+        <field name="col4_related_field_name">partner_id</field>
+        <field name="col4_related_model_name">res.partner</field>
+        <field name="col4_lambda">get_id_by_name</field>
+
+        <field name="col5_type">relational</field>
+        <field name="col5_direct_name">currency</field>
+        <field name="col5_related_field_name">currency_id</field>
+        <field name="col5_related_model_name">res.currency</field>
+        <field name="col5_lambda">get_id_by_ref</field>
+
+        <field name="col6_type">direct</field>
+        <field name="col6_direct_name">allow_out_payment</field>
+        <field name="col6_lambda">boolean</field>
+
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <record id="base_csv_importer.ai_template_file_map_categories" model="ai.template.file.map">
+        <field name="model_id" ref="product.model_product_category"/>
+
+        <field name="col2_type">direct</field>
+        <field name="col2_direct_name">name</field>
+
+        <field name="col3_type">relational</field>
+        <field name="col3_direct_name">parent</field>
+        <field name="col3_related_field_name">parent_id</field>
+        <field name="col3_related_model_name">product.category</field>
+        <field name="col3_lambda">get_id_by_ref</field>
+
+    </record>
+</odoo>

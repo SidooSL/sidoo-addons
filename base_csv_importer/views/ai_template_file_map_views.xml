@@ -1,0 +1,441 @@
+<odoo>
+    <record id="view_ai_template_file_map_tree" model="ir.ui.view">
+        <field name="name">ai.template.file.map.tree</field>
+        <field name="model">ai.template.file.map</field>
+        <field name="arch" type="xml">
+            <tree string="Mapeadores">
+                <field name="template_id"/>
+                <field name="model_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ai_template_file_map_form" model="ir.ui.view">
+        <field name="name">ai.template.file.map.form</field>
+        <field name="model">ai.template.file.map</field>
+        <field name="arch" type="xml">
+            <form string="Mapeador">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="template_id"/>
+                            <field name="model_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Mapas 2 - 10" name="map2_10">
+                            <group name="col2_3_container">
+                                <group string="Columna 2" name="col2">
+                                    <field name="col2_type"/>
+                                    <field name="col2_direct_name"/>
+                                    <field name="col2_related_field_name" invisible="col2_type != 'relational'" />
+                                    <field name="col2_related_model_name" invisible="col2_type != 'relational'"/>
+                                    <field name="col2_lambda"/>
+                                </group>
+                                <group string="Columna 3" name="col3">
+                                    <field name="col3_type"/>
+                                    <field name="col3_direct_name"/>
+                                    <field name="col3_related_field_name" invisible="col3_type != 'relational'"/>
+                                    <field name="col3_related_model_name" invisible="col3_type != 'relational'"/>
+                                    <field name="col3_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col4_5_container">
+                                <group string="Columna 4" name="col4">
+                                    <field name="col4_type"/>
+                                    <field name="col4_direct_name"/>
+                                    <field name="col4_related_field_name" invisible="col4_type != 'relational'" />
+                                    <field name="col4_related_model_name" invisible="col4_type != 'relational'"/>
+                                    <field name="col4_lambda"/>
+                                </group>
+                                <group string="Columna 5" name="col5">
+                                    <field name="col5_type"/>
+                                    <field name="col5_direct_name"/>
+                                    <field name="col5_related_field_name" invisible="col5_type != 'relational'"/>
+                                    <field name="col5_related_model_name" invisible="col5_type != 'relational'"/>
+                                    <field name="col5_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col6_7_container">
+                                <group string="Columna 6" name="col6">
+                                    <field name="col6_type"/>
+                                    <field name="col6_direct_name"/>
+                                    <field name="col6_related_field_name" invisible="col6_type != 'relational'" />
+                                    <field name="col6_related_model_name" invisible="col6_type != 'relational'"/>
+                                    <field name="col6_lambda"/>
+                                </group>
+                                <group string="Columna 7" name="col7">
+                                    <field name="col7_type"/>
+                                    <field name="col7_direct_name"/>
+                                    <field name="col7_related_field_name" invisible="col7_type != 'relational'"/>
+                                    <field name="col7_related_model_name" invisible="col7_type != 'relational'"/>
+                                    <field name="col7_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col8_9_container">
+                                <group string="Columna 8" name="col8">
+                                    <field name="col8_type"/>
+                                    <field name="col8_direct_name"/>
+                                    <field name="col8_related_field_name" invisible="col8_type != 'relational'" />
+                                    <field name="col8_related_model_name" invisible="col8_type != 'relational'"/>
+                                    <field name="col8_lambda"/>
+                                </group>
+                                <group string="Columna 9" name="col9">
+                                    <field name="col9_type"/>
+                                    <field name="col9_direct_name"/>
+                                    <field name="col9_related_field_name" invisible="col9_type != 'relational'"/>
+                                    <field name="col9_related_model_name" invisible="col9_type != 'relational'"/>
+                                    <field name="col9_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col10_container">
+                                <group string="Columna 10" name="col10">
+                                    <field name="col10_type"/>
+                                    <field name="col10_direct_name"/>
+                                    <field name="col10_related_field_name" invisible="col10_type != 'relational'"/>
+                                    <field name="col10_related_model_name" invisible="col10_type != 'relational'"/>
+                                    <field name="col10_lambda"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Mapas 11 - 20" name="map11_20">
+                            <group name="col11_12_container">
+                                <group string="Columna 11" name="col11">
+                                    <field name="col11_type"/>
+                                    <field name="col11_direct_name"/>
+                                    <field name="col11_related_field_name" invisible="col11_type != 'relational'" />
+                                    <field name="col11_related_model_name" invisible="col11_type != 'relational'"/>
+                                    <field name="col11_lambda"/>
+                                </group>
+                                <group string="Columna 12" name="col12">
+                                    <field name="col12_type"/>
+                                    <field name="col12_direct_name"/>
+                                    <field name="col12_related_field_name" invisible="col12_type != 'relational'"/>
+                                    <field name="col12_related_model_name" invisible="col12_type != 'relational'"/>
+                                    <field name="col12_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col13_14_container">
+                                <group string="Columna 13" name="col13">
+                                    <field name="col13_type"/>
+                                    <field name="col13_direct_name"/>
+                                    <field name="col13_related_field_name" invisible="col13_type != 'relational'" />
+                                    <field name="col13_related_model_name" invisible="col13_type != 'relational'"/>
+                                    <field name="col13_lambda"/>
+                                </group>
+                                <group string="Columna 14" name="col14">
+                                    <field name="col14_type"/>
+                                    <field name="col14_direct_name"/>
+                                    <field name="col14_related_field_name" invisible="col14_type != 'relational'"/>
+                                    <field name="col14_related_model_name" invisible="col14_type != 'relational'"/>
+                                    <field name="col14_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col15_16_container">
+                                <group string="Columna 15" name="col15">
+                                    <field name="col15_type"/>
+                                    <field name="col15_direct_name"/>
+                                    <field name="col15_related_field_name" invisible="col15_type != 'relational'" />
+                                    <field name="col15_related_model_name" invisible="col15_type != 'relational'"/>
+                                    <field name="col15_lambda"/>
+                                </group>
+                                <group string="Columna 16" name="col16">
+                                    <field name="col16_type"/>
+                                    <field name="col16_direct_name"/>
+                                    <field name="col16_related_field_name" invisible="col16_type != 'relational'"/>
+                                    <field name="col16_related_model_name" invisible="col16_type != 'relational'"/>
+                                    <field name="col16_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col17_18_container">
+                                <group string="Columna 17" name="col17">
+                                    <field name="col17_type"/>
+                                    <field name="col17_direct_name"/>
+                                    <field name="col17_related_field_name" invisible="col17_type != 'relational'" />
+                                    <field name="col17_related_model_name" invisible="col17_type != 'relational'"/>
+                                    <field name="col17_lambda"/>
+                                </group>
+                                <group string="Columna 18" name="col18">
+                                    <field name="col18_type"/>
+                                    <field name="col18_direct_name"/>
+                                    <field name="col18_related_field_name" invisible="col18_type != 'relational'"/>
+                                    <field name="col18_related_model_name" invisible="col18_type != 'relational'"/>
+                                    <field name="col18_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col19_20_container">
+                                <group string="Columna 19" name="col19">
+                                    <field name="col19_type"/>
+                                    <field name="col19_direct_name"/>
+                                    <field name="col19_related_field_name" invisible="col19_type != 'relational'" />
+                                    <field name="col19_related_model_name" invisible="col19_type != 'relational'"/>
+                                    <field name="col19_lambda"/>
+                                </group>
+                                <group string="Columna 20" name="col20">
+                                    <field name="col20_type"/>
+                                    <field name="col20_direct_name"/>
+                                    <field name="col20_related_field_name" invisible="col20_type != 'relational'"/>
+                                    <field name="col20_related_model_name" invisible="col20_type != 'relational'"/>
+                                    <field name="col20_lambda"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Mapas 21 - 30" name="map21_30">
+                            <group name="col21_22_container">
+                                <group string="Columna 21" name="col21">
+                                    <field name="col21_type"/>
+                                    <field name="col21_direct_name"/>
+                                    <field name="col21_related_field_name" invisible="col21_type != 'relational'" />
+                                    <field name="col21_related_model_name" invisible="col21_type != 'relational'"/>
+                                    <field name="col21_lambda"/>
+                                </group>
+                                <group string="Columna 22" name="col22">
+                                    <field name="col22_type"/>
+                                    <field name="col22_direct_name"/>
+                                    <field name="col22_related_field_name" invisible="col22_type != 'relational'"/>
+                                    <field name="col22_related_model_name" invisible="col22_type != 'relational'"/>
+                                    <field name="col22_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col23_24_container">
+                                <group string="Columna 23" name="col23">
+                                    <field name="col23_type"/>
+                                    <field name="col23_direct_name"/>
+                                    <field name="col23_related_field_name" invisible="col23_type != 'relational'" />
+                                    <field name="col23_related_model_name" invisible="col23_type != 'relational'"/>
+                                    <field name="col23_lambda"/>
+                                </group>
+                                <group string="Columna 24" name="col24">
+                                    <field name="col24_type"/>
+                                    <field name="col24_direct_name"/>
+                                    <field name="col24_related_field_name" invisible="col24_type != 'relational'"/>
+                                    <field name="col24_related_model_name" invisible="col24_type != 'relational'"/>
+                                    <field name="col24_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col25_26_container">
+                                <group string="Columna 25" name="col25">
+                                    <field name="col25_type"/>
+                                    <field name="col25_direct_name"/>
+                                    <field name="col25_related_field_name" invisible="col25_type != 'relational'" />
+                                    <field name="col25_related_model_name" invisible="col25_type != 'relational'"/>
+                                    <field name="col25_lambda"/>
+                                </group>
+                                <group string="Columna 26" name="col26">
+                                    <field name="col26_type"/>
+                                    <field name="col26_direct_name"/>
+                                    <field name="col26_related_field_name" invisible="col26_type != 'relational'"/>
+                                    <field name="col26_related_model_name" invisible="col26_type != 'relational'"/>
+                                    <field name="col26_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col27_28_container">
+                                <group string="Columna 27" name="col27">
+                                    <field name="col27_type"/>
+                                    <field name="col27_direct_name"/>
+                                    <field name="col27_related_field_name" invisible="col27_type != 'relational'" />
+                                    <field name="col27_related_model_name" invisible="col27_type != 'relational'"/>
+                                    <field name="col27_lambda"/>
+                                </group>
+                                <group string="Columna 28" name="col28">
+                                    <field name="col28_type"/>
+                                    <field name="col28_direct_name"/>
+                                    <field name="col28_related_field_name" invisible="col28_type != 'relational'"/>
+                                    <field name="col28_related_model_name" invisible="col28_type != 'relational'"/>
+                                    <field name="col28_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col29_30_container">
+                                <group string="Columna 29" name="col29">
+                                    <field name="col29_type"/>
+                                    <field name="col29_direct_name"/>
+                                    <field name="col29_related_field_name" invisible="col29_type != 'relational'" />
+                                    <field name="col29_related_model_name" invisible="col29_type != 'relational'"/>
+                                    <field name="col29_lambda"/>
+                                </group>
+                                <group string="Columna 30" name="col30">
+                                    <field name="col30_type"/>
+                                    <field name="col30_direct_name"/>
+                                    <field name="col30_related_field_name" invisible="col30_type != 'relational'"/>
+                                    <field name="col30_related_model_name" invisible="col30_type != 'relational'"/>
+                                    <field name="col30_lambda"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Mapas 31 - 40" name="map31_40">
+                            <group name="col31_32_container">
+                                <group string="Columna 31" name="col31">
+                                    <field name="col31_type"/>
+                                    <field name="col31_direct_name"/>
+                                    <field name="col31_related_field_name" invisible="col31_type != 'relational'" />
+                                    <field name="col31_related_model_name" invisible="col31_type != 'relational'"/>
+                                    <field name="col31_lambda"/>
+                                </group>
+                                <group string="Columna 32" name="col32">
+                                    <field name="col32_type"/>
+                                    <field name="col32_direct_name"/>
+                                    <field name="col32_related_field_name" invisible="col32_type != 'relational'"/>
+                                    <field name="col32_related_model_name" invisible="col32_type != 'relational'"/>
+                                    <field name="col32_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col33_34_container">
+                                <group string="Columna 33" name="col33">
+                                    <field name="col33_type"/>
+                                    <field name="col33_direct_name"/>
+                                    <field name="col33_related_field_name" invisible="col33_type != 'relational'" />
+                                    <field name="col33_related_model_name" invisible="col33_type != 'relational'"/>
+                                    <field name="col33_lambda"/>
+                                </group>
+                                <group string="Columna 34" name="col34">
+                                    <field name="col34_type"/>
+                                    <field name="col34_direct_name"/>
+                                    <field name="col34_related_field_name" invisible="col34_type != 'relational'"/>
+                                    <field name="col34_related_model_name" invisible="col34_type != 'relational'"/>
+                                    <field name="col34_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col35_36_container">
+                                <group string="Columna 35" name="col35">
+                                    <field name="col35_type"/>
+                                    <field name="col35_direct_name"/>
+                                    <field name="col35_related_field_name" invisible="col35_type != 'relational'" />
+                                    <field name="col35_related_model_name" invisible="col35_type != 'relational'"/>
+                                    <field name="col35_lambda"/>
+                                </group>
+                                <group string="Columna 36" name="col36">
+                                    <field name="col36_type"/>
+                                    <field name="col36_direct_name"/>
+                                    <field name="col36_related_field_name" invisible="col36_type != 'relational'"/>
+                                    <field name="col36_related_model_name" invisible="col36_type != 'relational'"/>
+                                    <field name="col36_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col37_38_container">
+                                <group string="Columna 37" name="col37">
+                                    <field name="col37_type"/>
+                                    <field name="col37_direct_name"/>
+                                    <field name="col37_related_field_name" invisible="col37_type != 'relational'" />
+                                    <field name="col37_related_model_name" invisible="col37_type != 'relational'"/>
+                                    <field name="col37_lambda"/>
+                                </group>
+                                <group string="Columna 38" name="col38">
+                                    <field name="col38_type"/>
+                                    <field name="col38_direct_name"/>
+                                    <field name="col38_related_field_name" invisible="col38_type != 'relational'"/>
+                                    <field name="col38_related_model_name" invisible="col38_type != 'relational'"/>
+                                    <field name="col38_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col39_40_container">
+                                <group string="Columna 39" name="col39">
+                                    <field name="col39_type"/>
+                                    <field name="col39_direct_name"/>
+                                    <field name="col39_related_field_name" invisible="col39_type != 'relational'" />
+                                    <field name="col39_related_model_name" invisible="col39_type != 'relational'"/>
+                                    <field name="col39_lambda"/>
+                                </group>
+                                <group string="Columna 40" name="col40">
+                                    <field name="col40_type"/>
+                                    <field name="col40_direct_name"/>
+                                    <field name="col40_related_field_name" invisible="col40_type != 'relational'"/>
+                                    <field name="col40_related_model_name" invisible="col40_type != 'relational'"/>
+                                    <field name="col40_lambda"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Mapas 41 - 50" name="map41_50">
+                            <group name="col41_42_container">
+                                <group string="Columna 41" name="col41">
+                                    <field name="col41_type"/>
+                                    <field name="col41_direct_name"/>
+                                    <field name="col41_related_field_name" invisible="col41_type != 'relational'" />
+                                    <field name="col41_related_model_name" invisible="col41_type != 'relational'"/>
+                                    <field name="col41_lambda"/>
+                                </group>
+                                <group string="Columna 42" name="col42">
+                                    <field name="col42_type"/>
+                                    <field name="col42_direct_name"/>
+                                    <field name="col42_related_field_name" invisible="col42_type != 'relational'"/>
+                                    <field name="col42_related_model_name" invisible="col42_type != 'relational'"/>
+                                    <field name="col42_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col43_44_container">
+                                <group string="Columna 43" name="col43">
+                                    <field name="col43_type"/>
+                                    <field name="col43_direct_name"/>
+                                    <field name="col43_related_field_name" invisible="col43_type != 'relational'" />
+                                    <field name="col43_related_model_name" invisible="col43_type != 'relational'"/>
+                                    <field name="col43_lambda"/>
+                                </group>
+                                <group string="Columna 44" name="col44">
+                                    <field name="col44_type"/>
+                                    <field name="col44_direct_name"/>
+                                    <field name="col44_related_field_name" invisible="col44_type != 'relational'"/>
+                                    <field name="col44_related_model_name" invisible="col44_type != 'relational'"/>
+                                    <field name="col44_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col45_46_container">
+                                <group string="Columna 45" name="col45">
+                                    <field name="col45_type"/>
+                                    <field name="col45_direct_name"/>
+                                    <field name="col45_related_field_name" invisible="col45_type != 'relational'" />
+                                    <field name="col45_related_model_name" invisible="col45_type != 'relational'"/>
+                                    <field name="col45_lambda"/>
+                                </group>
+                                <group string="Columna 46" name="col46">
+                                    <field name="col46_type"/>
+                                    <field name="col46_direct_name"/>
+                                    <field name="col46_related_field_name" invisible="col46_type != 'relational'"/>
+                                    <field name="col46_related_model_name" invisible="col46_type != 'relational'"/>
+                                    <field name="col46_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col47_48_container">
+                                <group string="Columna 47" name="col47">
+                                    <field name="col47_type"/>
+                                    <field name="col47_direct_name"/>
+                                    <field name="col47_related_field_name" invisible="col47_type != 'relational'" />
+                                    <field name="col47_related_model_name" invisible="col47_type != 'relational'"/>
+                                    <field name="col47_lambda"/>
+                                </group>
+                                <group string="Columna 48" name="col48">
+                                    <field name="col48_type"/>
+                                    <field name="col48_direct_name"/>
+                                    <field name="col48_related_field_name" invisible="col48_type != 'relational'"/>
+                                    <field name="col48_related_model_name" invisible="col48_type != 'relational'"/>
+                                    <field name="col48_lambda"/>
+                                </group>
+                            </group>
+                            <group name="col49_50_container">
+                                <group string="Columna 49" name="col49">
+                                    <field name="col49_type"/>
+                                    <field name="col49_direct_name"/>
+                                    <field name="col49_related_field_name" invisible="col49_type != 'relational'" />
+                                    <field name="col49_related_model_name" invisible="col49_type != 'relational'"/>
+                                    <field name="col49_lambda"/>
+                                </group>
+                                <group string="Columna 50" name="col50">
+                                    <field name="col50_type"/>
+                                    <field name="col50_direct_name"/>
+                                    <field name="col50_related_field_name" invisible="col50_type != 'relational'"/>
+                                    <field name="col50_related_model_name" invisible="col50_type != 'relational'"/>
+                                    <field name="col50_lambda"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Acciones post-importación">
+                        <field name="action_ids" context="{'default_model_id': model_id, 'default_mapper_id': id}">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="action" />
+                            </tree>
+                        </field>
+                    </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
