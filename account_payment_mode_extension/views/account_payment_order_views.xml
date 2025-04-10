@@ -10,7 +10,7 @@
                     string="Options for Payment Transition Account"
                 >
                     <field name="compensation_account" />
-                    <field name="transition_account_id"  invisible="not compensation_account"/>
+                    <field name="transition_account_id"  invisible="not compensation_account" domain="[('account_type', '=', 'asset_current')]"/>
                 </group>
             </xpath>
         </field>
