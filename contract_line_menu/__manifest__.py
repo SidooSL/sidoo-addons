@@ -25,6 +25,7 @@
     "author": "Iván de la Poza, Sidoo S.L.",
     "depends": [
         "contract",
+        "account",
     ],
     "data": [
         "views/contract_line_views.xml",

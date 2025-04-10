@@ -28,8 +28,8 @@
         "contract_line_menu",
     ],
     "data": [
-        "security/ir.model.access.csv",
         "security/contract_line_update_security.xml",
+        "security/ir.model.access.csv",
         "wizards/contract_line_update_wizard_views.xml",
         "views/contract_views.xml",
         "views/contract_line_views.xml",

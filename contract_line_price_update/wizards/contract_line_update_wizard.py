@@ -84,6 +84,7 @@ class ContractLineUpdateWizard(models.TransientModel):
             "type": "ir.actions.act_window",
             "res_model": "contract.contract",
             "view_mode": "tree,form",
+            "target": "new",
             "domain": [("id", "=", self.contract_line_ids.mapped("contract_id").ids)],
         }
 
@@ -93,5 +94,6 @@ class ContractLineUpdateWizard(models.TransientModel):
             "type": "ir.actions.act_window",
             "res_model": "contract.line",
             "view_mode": "tree,form",
+            "target": "new",
             "domain": [("id", "in", self.contract_line_ids.ids)],
         }
