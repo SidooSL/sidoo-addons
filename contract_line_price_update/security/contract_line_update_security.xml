@@ -1,0 +1,10 @@
+<odoo>
+    <record id="module_category_contracts" model="ir.module.category">
+        <field name="name">Contract Lines</field>
+    </record>
+
+    <record id="group_contract_price_update" model="res.groups">
+        <field name="name">Mass Edit Prices</field>
+        <field name="category_id" ref="contract_line_price_update.module_category_contracts"/>
+    </record>
+</odoo>

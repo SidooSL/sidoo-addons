@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_contract_line_tree" model="ir.actions.act_window">
+        <field name="name">Contract Lines</field>
+        <field name="res_model">contract.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No contract lines found. Edit an existing contract.
+            </p>
+        </field>
+        <field name="context">{'create': False}</field>
+    </record>
+    <menuitem id="menu_contract_line"
+              name="Contract Lines"
+              parent="account.menu_finance_receivables"
+              action="action_contract_line_tree"
+              sequence="55"/>
+</odoo>

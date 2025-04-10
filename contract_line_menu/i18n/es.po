@@ -1,0 +1,27 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* contract_line_menu
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 11:42+0000\n"
+"PO-Revision-Date: 2025-04-02 11:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: contract_line_menu
+#: model:ir.actions.act_window,name:contract_line_menu.action_contract_line_tree
+#: model:ir.ui.menu,name:contract_line_menu.menu_contract_line
+msgid "Contract Lines"
+msgstr "Líneas de contrato"
+
+#. module: contract_line_menu
+#: model_terms:ir.actions.act_window,help:contract_line_menu.action_contract_line_tree
+msgid "No contract lines found. Edit an existing contract."
+msgstr "No se han encontrado líneas. Crea un contrato primero."
