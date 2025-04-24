@@ -1,0 +1,12 @@
+<odoo>
+        <record id="action_process_ai_record" model="ir.actions.server">
+            <field name="name">Procesar Registros</field>
+            <field name="model_id" ref="base_csv_importer.model_ai_record"/>
+            <field name="binding_model_id" ref="base_csv_importer.model_ai_record"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = env['ai.record'].browse(env.context.get('active_ids')).process_record()
+            </field>
+        </record>
+
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+    <record id="view_ai_error_list" model="ir.ui.view">
+        <field name="name">ai.error.list</field>
+        <field name="model">ai.error</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="record_id"/>
+                <field name="file_id"/>
+                <field name="bundle_id"/>
+                <field name="batch_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ai_error_form" model="ir.ui.view">
+        <field name="name">ai.error.form</field>
+        <field name="model">ai.error</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group name="relations" string="Relacional">
+                            <field name="record_id"/>
+                            <field name="file_id"/>
+                            <field name="bundle_id"/>
+                            <field name="batch_id"/>
+                        </group>
+                        <group name="error" string="Error">
+                            <field name="name"/>
+                            <field name="stacktrace"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ai_error_search" model="ir.ui.view">
+        <field name="name">ai.error.search</field>
+        <field name="model">ai.error</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="file_id" string="Fichero"/>
+                <group expand="1" string="Agrupar por">
+                    <filter name="group_by_file" string="Fichero" context="{'group_by': 'file_id'}"/>
+                    <filter name="group_by_bundle" string="Histórico" context="{'group_by': 'bundle_id'}"/>
+                    <filter name="group_by_name" string="Error" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,103 @@
+<odoo>
+    <record id="action_base_csv_importer_bundle" model="ir.actions.act_window">
+        <field name="name">Importaciones</field>
+        <field name="res_model">ai.file.bundle</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_base_csv_importer_files" model="ir.actions.act_window">
+        <field name="name">Ficheros</field>
+        <field name="res_model">ai.file</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_base_csv_importer_batchs" model="ir.actions.act_window">
+        <field name="name">Lotes</field>
+        <field name="res_model">ai.record.batch</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_base_csv_importer_records" model="ir.actions.act_window">
+        <field name="name">Registros</field>
+        <field name="res_model">ai.record</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_has_errors': 1, 'search_default_group_by_file_id': 1}</field>
+    </record>
+    <record id="action_base_csv_importer_errors" model="ir.actions.act_window">
+        <field name="name">Errores</field>
+        <field name="res_model">ai.error</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_base_csv_importer_template_files" model="ir.actions.act_window">
+        <field name="name">Plantillas ficheros</field>
+        <field name="res_model">ai.template.file</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_base_csv_importer_template_file_maps" model="ir.actions.act_window">
+        <field name="name">Mapeadores</field>
+        <field name="res_model">ai.template.file.map</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_base_csv_importer_import_types" model="ir.actions.act_window">
+        <field name="name">Tipos de Importación</field>
+        <field name="res_model">ai.import.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="importer_root"
+              name="Importador Sidoo"
+              sequence="10" />
+    <menuitem id="importer_bundle"
+              name="Importaciones"
+              parent="importer_root"
+              sequence="20"
+              action="action_base_csv_importer_bundle"/>
+    <menuitem id="importer_data"
+              name="Datos"
+              parent="importer_root"
+              sequence="30"/>
+
+    <menuitem id="importer_files"
+              name="Ficheros"
+              parent="importer_data"
+              sequence="10"
+              action="action_base_csv_importer_files"/>
+
+    <menuitem id="importer_batchs"
+              name="Lotes"
+              parent="importer_data"
+              sequence="20"
+              action="action_base_csv_importer_batchs"/>
+
+    <menuitem id="importer_records"
+              name="Registros"
+              parent="importer_data"
+              sequence="30"
+              action="action_base_csv_importer_records"/>
+
+    <menuitem id="importer_errors"
+              name="Errores"
+              parent="importer_data"
+              sequence="40"
+              action="action_base_csv_importer_errors"/>
+
+    <menuitem id="importer_settings"
+              name="Configuración"
+              parent="importer_root"
+              sequence="40"/>
+
+    <menuitem id="importer_tipos_importacion"
+              name="Tipos de Importación"
+              parent="importer_settings"
+              sequence="50"
+              action="action_base_csv_importer_import_types"/>
+    <menuitem id="importer_template_files"
+                name="Plantilla Ficheros"
+                parent="importer_settings"
+                sequence="60"
+                action="action_base_csv_importer_template_files"/>
+
+    <menuitem id="importer_template_file_maps"
+                name="Mapeadores"
+                parent="importer_settings"
+                sequence="70"
+                action="action_base_csv_importer_template_file_maps"/>
+</odoo>

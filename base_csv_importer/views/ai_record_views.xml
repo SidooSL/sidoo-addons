@@ -1,0 +1,180 @@
+<odoo>
+    <record id="view_ai_record_tree" model="ir.ui.view">
+        <field name="name">ai.record.tree</field>
+        <field name="model">ai.record</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="bundle_id"/>
+                <field name="file_id"/>
+                <field name="header"/>
+                <field name="queued"/>
+                <field name="sequence"/>
+                <field name="external_id"/>
+                <field name="col1"/>
+                <field name="col2"/>
+                <field name="col3"/>
+                <field name="col4" optional="hide"/>
+                <field name="col5" optional="hide"/>
+                <field name="col6" optional="hide"/>
+                <field name="col7" optional="hide"/>
+                <field name="col8" optional="hide"/>
+                <field name="col9" optional="hide"/>
+                <field name="col10" optional="hide"/>
+                <field name="col11" optional="hide"/>
+                <field name="col12" optional="hide"/>
+                <field name="col13" optional="hide"/>
+                <field name="col14" optional="hide"/>
+                <field name="col15" optional="hide"/>
+                <field name="col16" optional="hide"/>
+                <field name="col17" optional="hide"/>
+                <field name="col18" optional="hide"/>
+                <field name="col19" optional="hide"/>
+                <field name="col20" optional="hide"/>
+                <field name="col21" optional="hide"/>
+                <field name="col22" optional="hide"/>
+                <field name="col23" optional="hide"/>
+                <field name="col24" optional="hide"/>
+                <field name="col25" optional="hide"/>
+                <field name="col26" optional="hide"/>
+                <field name="col27" optional="hide"/>
+                <field name="col28" optional="hide"/>
+                <field name="col29" optional="hide"/>
+                <field name="col30" optional="hide"/>
+                <field name="col31" optional="hide"/>
+                <field name="col32" optional="hide"/>
+                <field name="col33" optional="hide"/>
+                <field name="col34" optional="hide"/>
+                <field name="col35" optional="hide"/>
+                <field name="col36" optional="hide"/>
+                <field name="col37" optional="hide"/>
+                <field name="col38" optional="hide"/>
+                <field name="col39" optional="hide"/>
+                <field name="col40" optional="hide"/>
+                <field name="col41" optional="hide"/>
+                <field name="col42" optional="hide"/>
+                <field name="col43" optional="hide"/>
+                <field name="col44" optional="hide"/>
+                <field name="col45" optional="hide"/>
+                <field name="col46" optional="hide"/>
+                <field name="col47" optional="hide"/>
+                <field name="col48" optional="hide"/>
+                <field name="col49" optional="hide"/>
+                <field name="col50" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ai_record_form" model="ir.ui.view">
+        <field name="name">ai.record.form</field>
+        <field name="model">ai.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="process_record" string="Reintentar" type="object"/>
+                </header>
+                <sheet>
+                    <notebook>
+                        <page string="Errores">
+                            <field name="error_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="file_id"/>
+                                    <field name="batch_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Información relacional">
+                            <group>
+                                <field name="bundle_id"/>
+                                <field name="file_id"/>
+                                <field name="mapper_id"/>
+                                <field name="batch_id"/>
+                                <field name="external_id"/>
+                                <field name="queued"/>
+                                <field name="sequence"/>
+                            </group>
+                        </page>
+                        <page string="Contenido">
+                            <group>
+                                <field name="col1"/>
+                                <field name="col2"/>
+                                <field name="col3"/>
+                                <field name="col4"/>
+                                <field name="col5"/>
+                                <field name="col6"/>
+                                <field name="col7"/>
+                                <field name="col8"/>
+                                <field name="col9"/>
+                                <field name="col10"/>
+                                <field name="col11"/>
+                                <field name="col12"/>
+                                <field name="col13"/>
+                                <field name="col14"/>
+                                <field name="col15"/>
+                                <field name="col16"/>
+                                <field name="col17"/>
+                                <field name="col18"/>
+                                <field name="col19"/>
+                                <field name="col20"/>
+                            </group>
+                            <group>
+                                <field name="col21"/>
+                                <field name="col22"/>
+                                <field name="col23"/>
+                                <field name="col24"/>
+                                <field name="col25"/>
+                                <field name="col26"/>
+                                <field name="col27"/>
+                                <field name="col28"/>
+                                <field name="col29"/>
+                                <field name="col30"/>
+                                <field name="col31"/>
+                                <field name="col32"/>
+                                <field name="col33"/>
+                                <field name="col34"/>
+                                <field name="col35"/>
+                                <field name="col36"/>
+                                <field name="col37"/>
+                                <field name="col38"/>
+                                <field name="col39"/>
+                                <field name="col40"/>
+                            </group>
+                            <group>
+                                <field name="col41"/>
+                                <field name="col42"/>
+                                <field name="col43"/>
+                                <field name="col44"/>
+                                <field name="col45"/>
+                                <field name="col46"/>
+                                <field name="col47"/>
+                                <field name="col48"/>
+                                <field name="col49"/>
+                                <field name="col50"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_ai_record_search" model="ir.ui.view">
+        <field name="name">ai.record.search</field>
+        <field name="model">ai.record</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Con errores" name="has_errors" domain="[('error_ids', '!=', False)]"/>
+                <group expand="1" string="Agrupaciones">
+                    <filter
+                        name="group_by_file_id"
+                        string="Fichero"
+                        context="{'group_by': 'file_id'}"
+                    />
+                    <filter
+                        name="group_by_bundle_id"
+                        string="Histórico"
+                        context="{'group_by': 'bundle_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

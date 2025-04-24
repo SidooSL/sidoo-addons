@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_template_file,access_ai_template_file,model_ai_template_file,,1,1,1,1
+access_ai_record,access_ai_record,model_ai_record,,1,1,1,1
+access_ai_import_type,access_ai_import_type,model_ai_import_type,,1,1,1,1
+access_ai_file,access_ai_file,model_ai_file,,1,1,1,1
+access_ai_file_bundle,access_ai_file_bundle,model_ai_file_bundle,,1,1,1,1
+access_ai_record_batch,access_ai_record_batch,model_ai_record_batch,,1,1,1,1
+access_ai_error,access_ai_error,model_ai_error,,1,1,1,1
+access_ai_template_file_map,access_ai_template_file_map,model_ai_template_file_map,,1,1,1,1
+access_ai_template_model_actions,access_ai_template_model_actions,model_ai_template_model_actions,,1,1,1,1

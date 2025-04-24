@@ -1,0 +1,116 @@
+<odoo>
+    <record id="account_importer.ai_template_file_map_invoices" model="ai.template.file.map">
+        <field name="model_id" ref="account.model_account_move"/>
+
+        <field name="col2_type">direct</field>
+        <field name="col2_direct_name">ref</field>
+
+        <field name="col3_type">relational</field>
+        <field name="col3_direct_name">partner</field>
+        <field name="col3_related_field_name">partner_id</field>
+        <field name="col3_related_model_name">res.partner</field>
+        <field name="col3_lambda">get_id_by_ref_required</field>
+
+        <field name="col4_type">relational</field>
+        <field name="col4_direct_name">user</field>
+        <field name="col4_related_field_name">invoice_user_id</field>
+        <field name="col4_related_model_name">res.users</field>
+        <field name="col4_lambda">get_id_by_name</field>
+
+        <field name="col5_type">direct</field>
+        <field name="col5_direct_name">invoice_date_due</field>
+        <field name="col5_lambda">date</field>
+
+        <field name="col6_type">direct</field>
+        <field name="col6_direct_name">invoice_date</field>
+        <field name="col6_lambda">date</field>
+
+        <field name="col7_type">direct</field>
+        <field name="col7_direct_name">name</field>
+
+        <field name="col8_type">direct</field>
+        <field name="col8_direct_name">amount_total</field>
+        <field name="col8_lambda">float</field>
+
+        <field name="col9_type">relational</field>
+        <field name="col9_direct_name">journal</field>
+        <field name="col9_related_field_name">journal_id</field>
+        <field name="col9_related_model_name">account.journal</field>
+        <field name="col9_lambda">get_id_by_name</field>
+
+        <field name="col10_type">relational</field>
+        <field name="col10_direct_name">team</field>
+        <field name="col10_related_field_name">team_id</field>
+        <field name="col10_related_model_name">crm.team</field>
+        <field name="col10_lambda">get_id_by_name</field>
+
+        <field name="col11_type">relational</field>
+        <field name="col11_direct_name">payment_bank</field>
+        <field name="col11_related_field_name">bank_partner_id</field>
+        <field name="col11_related_model_name">res.partner</field>
+        <field name="col11_lambda">get_id_by_name</field>
+
+        <field name="col12_type">direct</field>
+        <field name="col12_direct_name">payment_reference</field>
+
+        <field name="col13_type">relational</field>
+        <field name="col13_direct_name">account_position</field>
+        <field name="col13_related_field_name">fiscal_position_id</field>
+        <field name="col13_related_model_name">account.fiscal.position</field>
+        <field name="col13_lambda">get_id_by_name</field>
+
+        <field name="col14_type">direct</field>
+        <field name="col14_direct_name">move_type</field>
+
+        <field name="col15_type">direct</field>
+        <field name="col15_direct_name">invoice_line_ids/id</field>
+
+        <field name="col16_type">direct</field>
+        <field name="col16_direct_name">invoice_line_ids/account_id</field>
+        <field name="col16_lambda">get_id_by_ref</field>
+
+        <field name="col17_type">direct</field>
+        <field name="col17_direct_name">invoice_line_ids/quantity</field>
+        <field name="col17_lambda">float</field>
+
+        <field name="col18_type">direct</field>
+        <field name="col18_direct_name">invoice_line_ids/discount</field>
+        <field name="col18_lambda">float</field>
+
+        <field name="col19_type">direct</field>
+        <field name="col19_direct_name">invoice_line_ids/tax_ids</field>
+        <field name="col19_lambda">get_ids_by_ref</field>
+
+        <field name="col20_type">direct</field>
+        <field name="col20_direct_name">invoice_line_ids/price_unit</field>
+        <field name="col20_lambda">float</field>
+
+        <field name="col21_type">direct</field>
+        <field name="col21_direct_name">invoice_line_ids/sequence</field>
+        <field name="col21_lambda">integer</field>
+
+        <field name="col22_type">direct</field>
+        <field name="col22_direct_name">invoice_line_ids/currency_id</field>
+        <field name="col22_lambda">get_id_by_ref</field>
+
+        <field name="col23_type">relational</field>
+        <field name="col23_direct_name">payments</field>
+        <field name="col23_related_field_name">matched_payment_ids</field>
+        <field name="col23_related_model_name">account.payment</field>
+        <field name="col23_lambda">get_ids_by_ref</field>
+
+    </record>
+
+    <record id="account_importer.ai_template_file_invoice_action_post" model="ai.template.model.actions">
+        <field name="mapper_id" ref="account_importer.ai_template_file_map_invoices"/>
+        <field name="action">action_post</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="account_importer.ai_template_file_invoice_action_reconcile" model="ai.template.model.actions">
+        <field name="mapper_id" ref="account_importer.ai_template_file_map_invoices"/>
+        <field name="action">action_reconcile</field>
+        <field name="sequence">20</field>
+    </record>
+
+</odoo>
