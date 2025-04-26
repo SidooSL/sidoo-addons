@@ -295,7 +295,9 @@ class AITemplateFileMap(models.Model):
             or value,
             "boolean": lambda: getattr(record, field["col_name"], False)
             in ["1", "true", "True", True],
-            "float": lambda: float(value.replace(",", ".")) if value else None,
+            "float": lambda: float(value.replace(",", "."))
+            if value and value != ""
+            else None,
             "integer": lambda: int(value) if value else None,
             "date": lambda: self._parse_date(value) if value else None,
             "direct_lowered": lambda: getattr(record, field["col_name"], False).lower()
@@ -327,6 +329,8 @@ class AITemplateFileMap(models.Model):
     def _parse_date(self, date_value):
         """Convierte una cadena en fecha"""
         try:
+            if date_value in ["", "0", "0.0"]:
+                return False
             for char in ["/", ".", " ", ",", ":"]:
                 date_value = date_value.replace(char, "-")
             _no_use = datetime.datetime.strptime(date_value, "%Y-%m-%d")
@@ -480,6 +484,8 @@ class AITemplateFileMap(models.Model):
                 raise_if_not_found=False,
             )
         if not result:
+            if model == "account.payment":
+                return self.get_id_by_ref("account.move", value, raise_if_not_found)
             return self.get_id_by_name(model, value, raise_if_not_found)
         if raise_if_not_found and not result:
             raise ValidationError(

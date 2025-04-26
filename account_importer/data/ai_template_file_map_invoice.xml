@@ -26,8 +26,9 @@
         <field name="col6_lambda">date</field>
 
         <field name="col7_type">direct</field>
-        <field name="col7_direct_name">name</field>
+        <field name="col7_direct_name">number</field>
 
+        <!-- TODO: No creo que sea necesario -->
         <field name="col8_type">direct</field>
         <field name="col8_direct_name">amount_total</field>
         <field name="col8_lambda">float</field>
@@ -69,35 +70,41 @@
         <field name="col16_direct_name">invoice_line_ids/account_id</field>
         <field name="col16_lambda">get_id_by_ref</field>
 
-        <field name="col17_type">direct</field>
-        <field name="col17_direct_name">invoice_line_ids/quantity</field>
-        <field name="col17_lambda">float</field>
+        <field name="col17_type">relational</field>
+        <field name="col17_direct_name">product_id</field>
+        <field name="col17_related_field_name">product_id</field>
+        <field name="col17_related_model_name">product.product</field>
+        <field name="col17_lambda">get_id_by_name</field>
 
         <field name="col18_type">direct</field>
-        <field name="col18_direct_name">invoice_line_ids/discount</field>
+        <field name="col18_direct_name">invoice_line_ids/quantity</field>
         <field name="col18_lambda">float</field>
 
         <field name="col19_type">direct</field>
-        <field name="col19_direct_name">invoice_line_ids/tax_ids</field>
-        <field name="col19_lambda">get_ids_by_ref</field>
+        <field name="col19_direct_name">invoice_line_ids/discount</field>
+        <field name="col19_lambda">float</field>
 
         <field name="col20_type">direct</field>
-        <field name="col20_direct_name">invoice_line_ids/price_unit</field>
-        <field name="col20_lambda">float</field>
+        <field name="col20_direct_name">invoice_line_ids/tax_ids</field>
+        <field name="col20_lambda">get_ids_by_ref</field>
 
         <field name="col21_type">direct</field>
-        <field name="col21_direct_name">invoice_line_ids/sequence</field>
-        <field name="col21_lambda">integer</field>
+        <field name="col21_direct_name">invoice_line_ids/price_unit</field>
+        <field name="col21_lambda">float</field>
 
         <field name="col22_type">direct</field>
-        <field name="col22_direct_name">invoice_line_ids/currency_id</field>
-        <field name="col22_lambda">get_id_by_ref</field>
+        <field name="col22_direct_name">invoice_line_ids/sequence</field>
+        <field name="col22_lambda">integer</field>
 
-        <field name="col23_type">relational</field>
-        <field name="col23_direct_name">payments</field>
-        <field name="col23_related_field_name">matched_payment_ids</field>
-        <field name="col23_related_model_name">account.payment</field>
-        <field name="col23_lambda">get_ids_by_ref</field>
+        <field name="col23_type">direct</field>
+        <field name="col23_direct_name">invoice_line_ids/currency_id</field>
+        <field name="col23_lambda">get_id_by_ref</field>
+
+        <field name="col24_type">relational</field>
+        <field name="col24_direct_name">payments</field>
+        <field name="col24_related_field_name">matched_payment_ids</field>
+        <field name="col24_related_model_name">account.payment</field>
+        <field name="col24_lambda">get_ids_by_ref</field>
 
     </record>
 
