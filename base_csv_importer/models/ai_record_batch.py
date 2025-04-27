@@ -122,7 +122,13 @@ class AIRecordBatch(models.Model):
         external_id = self.env.ref(external_id_name, raise_if_not_found=False)
         if not external_id and odoo_vals and previous_external_id:
             try:
-                self.create_odoo_record(record, odoo_vals, previous_external_id)
+                existing_id = self.env.ref(
+                    previous_external_id, raise_if_not_found=False
+                )
+                if existing_id:
+                    self.write_odoo_record(record, odoo_vals)
+                else:
+                    self.create_odoo_record(record, odoo_vals, previous_external_id)
             except Exception as e:
                 error_traceback = traceback.format_exc()
                 _logger.error(

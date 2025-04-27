@@ -21,10 +21,8 @@
         <field name="col6_related_model_name">account.journal</field>
         <field name="col6_lambda">get_id_by_name</field>
 
-        <field name="col7_type">relational</field>
-        <field name="col7_direct_name">partner</field>
-        <field name="col7_related_field_name">partner_id</field>
-        <field name="col7_related_model_name">res.partner</field>
+        <field name="col7_type">direct</field>
+        <field name="col7_direct_name">line_ids/partner_id</field>
         <field name="col7_lambda">get_id_by_ref</field>
 
         <field name="col8_type">direct</field>

@@ -26,7 +26,7 @@
         <field name="col6_lambda">date</field>
 
         <field name="col7_type">direct</field>
-        <field name="col7_direct_name">number</field>
+        <field name="col7_direct_name">name</field>
 
         <!-- TODO: No creo que sea necesario -->
         <field name="col8_type">direct</field>
@@ -70,10 +70,8 @@
         <field name="col16_direct_name">invoice_line_ids/account_id</field>
         <field name="col16_lambda">get_id_by_ref</field>
 
-        <field name="col17_type">relational</field>
-        <field name="col17_direct_name">product_id</field>
-        <field name="col17_related_field_name">product_id</field>
-        <field name="col17_related_model_name">product.product</field>
+        <field name="col17_type">direct</field>
+        <field name="col17_direct_name">invoice_line_ids/product_id</field>
         <field name="col17_lambda">get_id_by_name</field>
 
         <field name="col18_type">direct</field>
@@ -101,9 +99,9 @@
         <field name="col23_lambda">get_id_by_ref</field>
 
         <field name="col24_type">relational</field>
-        <field name="col24_direct_name">payments</field>
-        <field name="col24_related_field_name">matched_payment_ids</field>
-        <field name="col24_related_model_name">account.payment</field>
+        <field name="col24_direct_name">account_payment_moves</field>
+        <field name="col24_related_field_name">payment_move_ids</field>
+        <field name="col24_related_model_name">account.move</field>
         <field name="col24_lambda">get_ids_by_ref</field>
 
     </record>

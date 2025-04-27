@@ -47,27 +47,27 @@
         <field name="col14_lambda">get_id_by_name</field>
 
         <field name="col15_type">relational</field>
-        <field name="col15_direct_name">customer_payment_mode</field>
+        <field name="col15_direct_name">customer_payment_term</field>
         <field name="col15_related_field_name">property_payment_term_id</field>
         <field name="col15_related_model_name">account.payment.term</field>
         <field name="col15_lambda">get_id_by_name</field>
 
         <field name="col16_type">relational</field>
-        <field name="col16_direct_name">supplier_payment_mode</field>
+        <field name="col16_direct_name">supplier_payment_term</field>
         <field name="col16_related_field_name">property_supplier_payment_term_id</field>
         <field name="col16_related_model_name">account.payment.term</field>
         <field name="col16_lambda">get_id_by_name</field>
 
         <field name="col17_type">relational</field>
-        <field name="col17_direct_name">customer_payment_term</field>
-        <field name="col17_related_field_name">property_inbound_payment_method_line_id</field>
-        <field name="col17_related_model_name">account.payment.method.line</field>
+        <field name="col17_direct_name">customer_payment_mode</field>
+        <field name="col17_related_field_name">customer_payment_mode_id</field>
+        <field name="col17_related_model_name">account.payment.mode</field>
         <field name="col17_lambda">get_id_by_name</field>
 
         <field name="col18_type">relational</field>
-        <field name="col18_direct_name">supplier_payment_term</field>
-        <field name="col18_related_field_name">property_outbound_payment_method_line_id</field>
-        <field name="col18_related_model_name">account.payment.method.line</field>
+        <field name="col18_direct_name">supplier_payment_mode</field>
+        <field name="col18_related_field_name">supplier_payment_mode_id</field>
+        <field name="col18_related_model_name">account.payment.mode</field>
         <field name="col18_lambda">get_id_by_name</field>
 
         <field name="col19_type">relational</field>

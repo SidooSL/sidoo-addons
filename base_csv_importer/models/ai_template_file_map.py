@@ -254,9 +254,6 @@ class AITemplateFileMap(models.Model):
 
     @api.model
     def handle_field_value(self, field, value, model, record):
-        _logger.info(
-            f"Applying lambda: {field['lambda']} field: {field['direct_name']} with value: {value} and model: {model} and record: {record}"
-        )
         if "lambda" not in field.keys():
             raise ValidationError(
                 _(
@@ -285,7 +282,7 @@ class AITemplateFileMap(models.Model):
                     [
                         self.get_id_by_ref(model, ref.strip(), raise_if_not_found=True)
                         for ref in value.split(",")
-                        if ref and ref.strip()
+                        if ref not in ["", "0", "0.0"] and ref.strip()
                     ],
                 )
             ],
@@ -455,6 +452,16 @@ class AITemplateFileMap(models.Model):
 
     @api.model
     def get_id_by_name(self, model_name, value, raise_if_not_found=False):
+        if value in ["", "0", "0.0"]:
+            if raise_if_not_found:
+                raise ValidationError(
+                    _(
+                        f"El campo '{model_name}' no puede estar vacío. "
+                        f"El valor '{value}' no se pudo mapear."
+                    )
+                )
+            else:
+                return False
         model = self.env[model_name]
         name_field_name = "name"
         if model_name in ["account.account"]:

@@ -34,6 +34,7 @@
         "data/ai_template_file_map_payment.xml",
         "data/ai_template_file_map_invoice.xml",
         "data/ai_template_file_records.xml",
+        "views/account_move_views.xml",
     ],
     "application": True,
 }
