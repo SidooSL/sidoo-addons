@@ -16,15 +16,7 @@ class ContractLineUpdateWizard(models.TransientModel):
         digits=(16, 3),
         required=True,
     )
-    output_type = fields.Selection(
-        selection=[
-            ("_contract_output", "Contract"),
-            ("_contract_line_output", "Contract Line"),
-        ],
-        string="To show",
-        default="_contract_output",
-        required=True,
-    )
+
     count_line = fields.Integer(
         string="Number of Lines",
         compute="_compute_count_line",
@@ -39,61 +31,18 @@ class ContractLineUpdateWizard(models.TransientModel):
     def update_price(self):
         if self.factor == 0:
             raise UserError(_("The factor must be different from 0"))
-        self._apply_price_update()
-        return getattr(self, self.output_type)()
+        if len(self.contract_line_ids) == 0:
+            raise UserError(_("No contract lines selected"))
 
-    def _apply_price_update(self):
-        for line in self.contract_line_ids:
-            old_price = line.price_unit
-            new_price = old_price + (old_price * self.factor)
-            line.write(
-                {
-                    "prev_price": old_price,
-                    "price_unit": new_price,
-                    "last_mass_update_date": fields.Datetime.now(),
-                }
-            )
-            self._post_edit_info_message(line, old_price, new_price)
-
-    def _post_edit_info_message(self, line, old_price, new_price):
-        currency = line.currency_id
-
-        if currency.position == "before":
-            old_price_formatted = f"{currency.symbol}{old_price:.2f}"
-            new_price_formatted = f"{currency.symbol}{new_price:.2f}"
-        else:
-            old_price_formatted = f"{old_price:.2f}{currency.symbol}"
-            new_price_formatted = f"{new_price:.2f}{currency.symbol}"
-
-        body = _(
-            "Price updated from <b>%(old_price)s</b> to <b>%(new_price)s</b> using a factor of <b>%(factor).3f</b>"
-        ) % {
-            "old_price": old_price_formatted,
-            "new_price": new_price_formatted,
-            "factor": self.factor,
-        }
-
-        body_contract = body + _(" in contract line: <b>%s</b>") % (line.name)
-
-        line.message_post(body=body)
-        line.contract_id.message_post(body=body_contract)
-
-    def _contract_output(self):
         return {
-            "name": _("Updated Contract"),
-            "type": "ir.actions.act_window",
-            "res_model": "contract.contract",
-            "view_mode": "tree,form",
-            "target": "new",
-            "domain": [("id", "=", self.contract_line_ids.mapped("contract_id").ids)],
-        }
-
-    def _contract_line_output(self):
-        return {
-            "name": _("Updated Contract Line"),
-            "type": "ir.actions.act_window",
-            "res_model": "contract.line",
-            "view_mode": "tree,form",
-            "target": "new",
-            "domain": [("id", "in", self.contract_line_ids.ids)],
+            'type': 'ir.actions.act_window',
+            'res_model': 'contract.line.update.confirm.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_contract_line_ids': self.contract_line_ids.ids,
+                'default_factor': self.factor,
+                'default_count_line': self.count_line,
+                'default_output_type': self.env.context.get("default_output_type"),
+            }
         }

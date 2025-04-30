@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-02 11:04+0000\n"
-"PO-Revision-Date: 2025-04-02 11:04+0000\n"
+"POT-Creation-Date: 2025-04-30 09:16+0000\n"
+"PO-Revision-Date: 2025-04-30 09:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,12 +17,13 @@ msgstr ""
 
 #. module: contract_line_price_update
 #. odoo-python
-#: code:addons/contract_line_price_update/wizards/contract_line_update_wizard.py:0
+#: code:addons/contract_line_price_update/wizards/contract_line_update_confirm_wizard.py:0
 #, python-format
 msgid " in contract line: <b>%s</b>"
 msgstr " en la línea de contrato: <b>%s</b>"
 
 #. module: contract_line_price_update
+#: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_confirm_wizard_form
 #: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_wizard_form
 msgid ""
 "<span class=\"fa fa-exclamation-triangle fa-2x\"/>\n"
@@ -32,7 +33,6 @@ msgstr ""
 "<span class=\"fa fa-exclamation-triangle fa-2x\"/>\n"
 "                    <strong> Advertencia:</strong> Esta acción es <strong>irreversible</strong> y aplicará el multiplicador indicado a las líneas de contrato seleccionadas.\n"
 "                    <br/><strong>Asegurate de revisar los cambios antes de continuar.</strong>"
-
 
 #. module: contract_line_price_update
 #: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_wizard_form
@@ -50,19 +50,45 @@ msgid "<span>Apply To </span>"
 msgstr "<span>Aplicar a </span>"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_needaction
+msgid "Action Needed"
+msgstr "Acción necesaria"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_attachment_count
+msgid "Attachment Count"
+msgstr "Contador de adjuntos"
+
+#. module: contract_line_price_update
+#: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_confirm_wizard_form
 #: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_wizard_form
 msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: contract_line_price_update
+#: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_confirm_wizard_form
+msgid "Confirm Update Contract Line Prices"
+msgstr "Confirmar actualización de precios de líneas de contrato"
+
+#. module: contract_line_price_update
+#: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_confirm_wizard_form
+msgid "Confirm and Apply"
+msgstr "Confirmar y aplicar"
+
+#. module: contract_line_price_update
+#: model:ir.model,name:contract_line_price_update.model_contract_line_update_confirm_wizard
+msgid "Confirmation Wizard for Contract Line Update"
+msgstr ""
+
+#. module: contract_line_price_update
 #: model:ir.model,name:contract_line_price_update.model_contract_contract
-#: model:ir.model.fields.selection,name:contract_line_price_update.selection__contract_line_update_wizard__output_type___contract_output
+#: model:ir.model.fields.selection,name:contract_line_price_update.selection__contract_line_update_confirm_wizard__output_type___contract_output
 msgid "Contract"
 msgstr "Contrato"
 
 #. module: contract_line_price_update
 #: model:ir.model,name:contract_line_price_update.model_contract_line
-#: model:ir.model.fields.selection,name:contract_line_price_update.selection__contract_line_update_wizard__output_type___contract_line_output
+#: model:ir.model.fields.selection,name:contract_line_price_update.selection__contract_line_update_confirm_wizard__output_type___contract_line_output
 msgid "Contract Line"
 msgstr "Línea de contrato"
 
@@ -72,30 +98,66 @@ msgid "Contract Line Update Wizard"
 msgstr "Asistente de líneas de contrato"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__contract_line_ids
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__contract_line_ids
 #: model:ir.module.category,name:contract_line_price_update.module_category_contracts
 msgid "Contract Lines"
 msgstr "Líneas de contrato"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__create_uid
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__create_date
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__create_date
 msgid "Created on"
 msgstr "Creado el"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__display_name
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Partners)"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__has_message
+msgid "Has Message"
+msgstr "Tiene mensaje"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__id
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__id
 msgid "ID"
 msgstr "ID"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,help:contract_line_price_update.field_contract_line__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, los nuevos mensajes requieren su atención."
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,help:contract_line_price_update.field_contract_line__message_has_error
+#: model:ir.model.fields,help:contract_line_price_update.field_contract_line__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
 
 #. module: contract_line_price_update
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__last_mass_update_date
@@ -103,16 +165,19 @@ msgid "Last Mass Update Date"
 msgstr "Última fecha de actualización masiva"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard____last_update
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__write_uid
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__write_date
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
@@ -123,19 +188,63 @@ msgid "Last time this contract line was updated in a mass update"
 msgstr "Última fecha en la que se ha modificado el precio de manera masiva"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto principal"
+
+#. module: contract_line_price_update
 #: model:res.groups,name:contract_line_price_update.group_contract_price_update
 msgid "Mass Edit Prices"
 msgstr "Edición masiva de precios"
 
 #. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensaje"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__factor
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__factor
 msgid "Multiplier"
 msgstr "Multiplicador"
 
 #. module: contract_line_price_update
+#. odoo-python
+#: code:addons/contract_line_price_update/wizards/contract_line_update_wizard.py:0
+#, python-format
+msgid "No contract lines selected"
+msgstr "No se han seleccionado líneas de contrato"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__count_line
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__count_line
 msgid "Number of Lines"
 msgstr "Número de líneas"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,help:contract_line_price_update.field_contract_line__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren acción"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,help:contract_line_price_update.field_contract_line__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
 
 #. module: contract_line_price_update
 #: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__prev_price
@@ -149,12 +258,19 @@ msgstr "Precio anterior a la edición masiva del precio de contrato"
 
 #. module: contract_line_price_update
 #. odoo-python
-#: code:addons/contract_line_price_update/wizards/contract_line_update_wizard.py:0
+#: code:addons/contract_line_price_update/wizards/contract_line_update_confirm_wizard.py:0
 #, python-format
 msgid ""
-"Price updated from <b>%s</b> to <b>%s</b> using a factor of <b>%.3f</b>"
+"Price updated from <b>%(old_price)s</b> to <b>%(new_price)s</b> using a "
+"factor of <b>%(factor).3f</b>"
 msgstr ""
-"Price actualizado de <b>%s</b> a <b>%s</b> usando un multiplicador de <b>%.3f</b>"
+"Precio actualizado de <b>%(old_price)s</b> a <b>%(new_price)s</b> usando un "
+"factor de <b>%(factor).3f</b>"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega de SMS"
 
 #. module: contract_line_price_update
 #. odoo-python
@@ -164,37 +280,41 @@ msgid "The factor must be different from 0"
 msgstr "El multiplicador debe ser distinto a 0"
 
 #. module: contract_line_price_update
-#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_wizard__output_type
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line_update_confirm_wizard__output_type
 msgid "To show"
-msgstr "A mostrar"
+msgstr "Mostrar"
 
 #. module: contract_line_price_update
 #. odoo-python
 #: code:addons/contract_line_price_update/models/contract.py:0
 #: code:addons/contract_line_price_update/models/contract_line.py:0
-#: model:ir.actions.server,name:contract_line_price_update.contract_update_action_server
 #: model:ir.actions.server,name:contract_line_price_update.contract_line_update_action_server
+#: model:ir.actions.server,name:contract_line_price_update.contract_update_action_server
 #: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_wizard_form
+#, python-format
 msgid "Update Contract Line Prices"
 msgstr "Actualizar precios de líneas de contrato"
 
 #. module: contract_line_price_update
 #. odoo-python
-#: code:addons/contract_line_price_update/wizards/contract_line_update_wizard.py:0
+#: code:addons/contract_line_price_update/wizards/contract_line_update_confirm_wizard.py:0
 #, python-format
 msgid "Updated Contract"
 msgstr "Contratos actualizados"
 
 #. module: contract_line_price_update
 #. odoo-python
-#: code:addons/contract_line_price_update/wizards/contract_line_update_wizard.py:0
+#: code:addons/contract_line_price_update/wizards/contract_line_update_confirm_wizard.py:0
 #, python-format
 msgid "Updated Contract Line"
 msgstr "Líneas de contrato actualizadas"
 
 #. module: contract_line_price_update
-#: model_terms:ir.ui.view,arch_db:contract_line_price_update.view_contract_line_update_wizard_form
-msgid ""
-"¿Are you sure you want to update the prices of the selected contract lines?"
-msgstr ""
-"¿Estás seguro de que quieres actualizar las líneas de contrato seleccionadas?"
+#: model:ir.model.fields,field_description:contract_line_price_update.field_contract_line__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes de la web"
+
+#. module: contract_line_price_update
+#: model:ir.model.fields,help:contract_line_price_update.field_contract_line__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación de la web"
