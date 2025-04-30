@@ -15,9 +15,6 @@
                         <field name="contract_line_ids" widget="many2many_tags" invisible="1" />
                         <field name="factor" />
                     </group>
-                    <group>
-                        <field name="output_type" widget="radio" />
-                    </group>
                 </group>
                 <footer>
                     <div class="d-flex align-items-center">
@@ -25,7 +22,6 @@
                             type="object"
                             class="btn-primary"
                             style="vertical-align: middle;"
-                            confirm="¿Are you sure you want to update the prices of the selected contract lines?"
                         >
                             <span>Apply To </span>
                             <field name="count_line" />
