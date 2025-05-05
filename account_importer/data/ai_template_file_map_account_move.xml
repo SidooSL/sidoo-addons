@@ -22,28 +22,32 @@
         <field name="col6_lambda">get_id_by_name</field>
 
         <field name="col7_type">direct</field>
-        <field name="col7_direct_name">line_ids/id</field>
+        <field name="col7_direct_name">line_ids/partner_id</field>
+        <field name="col7_lambda">get_id_by_ref</field>
 
         <field name="col8_type">direct</field>
-        <field name="col8_direct_name">line_ids/name</field>
+        <field name="col8_direct_name">line_ids/id</field>
 
         <field name="col9_type">direct</field>
-        <field name="col9_direct_name">line_ids/debit</field>
-        <field name="col9_lambda">float</field>
+        <field name="col9_direct_name">line_ids/name</field>
 
         <field name="col10_type">direct</field>
-        <field name="col10_direct_name">line_ids/credit</field>
+        <field name="col10_direct_name">line_ids/debit</field>
         <field name="col10_lambda">float</field>
 
         <field name="col11_type">direct</field>
-        <field name="col11_direct_name">line_ids/date_maturity</field>
+        <field name="col11_direct_name">line_ids/credit</field>
+        <field name="col11_lambda">float</field>
 
         <field name="col12_type">direct</field>
-        <field name="col12_direct_name">line_ids/ref</field>
+        <field name="col12_direct_name">line_ids/date_maturity</field>
 
         <field name="col13_type">direct</field>
-        <field name="col13_direct_name">line_ids/account_id</field>
-        <field name="col13_lambda">get_id_by_ref_required</field>
+        <field name="col13_direct_name">line_ids/ref</field>
+
+        <field name="col14_type">direct</field>
+        <field name="col14_direct_name">line_ids/account_id</field>
+        <field name="col14_lambda">get_id_by_ref_required</field>
 
     </record>
 
