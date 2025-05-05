@@ -73,7 +73,7 @@ class AITemplateFileMap(models.Model):
                     "batch_id": record.batch_id.id,
                 }
             )
-            return
+            raise e
 
         try:
             has_to_create = True
@@ -275,16 +275,18 @@ class AITemplateFileMap(models.Model):
             ),
             "get_ids_by_ref": lambda: None
             if not value
+            or not any(
+                ref.strip()
+                and ref not in ["", "0", "0.0"]
+                and self.get_id_by_ref(model, ref.strip(), raise_if_not_found=False)
+                for ref in value.split(",")
+            )
             else [
-                (
-                    6,
-                    0,
-                    [
-                        self.get_id_by_ref(model, ref.strip(), raise_if_not_found=True)
-                        for ref in value.split(",")
-                        if ref not in ["", "0", "0.0"] and ref.strip()
-                    ],
-                )
+                (4, self.get_id_by_ref(model, ref.strip(), raise_if_not_found=False))
+                for ref in value.split(",")
+                if ref not in ["", "0", "0.0"]
+                and ref.strip()
+                and self.get_id_by_ref(model, ref.strip(), raise_if_not_found=False)
             ],
             "get_id_by_ref_or_default": lambda: self.get_id_by_ref_or_default(
                 model, value
@@ -469,6 +471,13 @@ class AITemplateFileMap(models.Model):
         if model_name in ["res.partner.bank"]:
             name_field_name = "acc_number"
         record = model.search([(name_field_name, "=", value)], limit=1)
+        if not record:
+            # From normalize_external_id, we can have a value like '****account_217001'
+            valueArr = value.split("_")
+            if len(valueArr) > 1:
+                # Última posición del array
+                value = valueArr[-1]
+                record = model.search([(name_field_name, "=", value)], limit=1)
         result = record.id if record else None
         if not result and raise_if_not_found:
             raise ValidationError(

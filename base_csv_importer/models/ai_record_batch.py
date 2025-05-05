@@ -279,7 +279,7 @@ class AIRecordBatch(models.Model):
         main_odoo_id = self.env.ref(external_id_name, raise_if_not_found=True)
         if model in ("account.move", "account.payment"):
             _logger.info(
-                f"No se permite la modificación del registro {record.id} del batch {self.id} de la plantilla {self.file_id.template_id.name}"
+                f"No se permite la modificación del registro {record.id} del batch {self.id} de la plantilla {self.file_id.template_id.name} con id externo {record.col1}. Suele ocurrir cuando no has indicado ni id de cabecera ni de línea."
             )
             return main_odoo_id
         tomany_keys = self.env["ai.template.file.map"].tomany_keys(record)

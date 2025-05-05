@@ -29,6 +29,7 @@
         "base_csv_importer",
     ],
     "data": [
+        "data/parameters.xml",
         "data/ai_template_file_map_bank_account.xml",
         "data/ai_template_file_map_account_move.xml",
         "data/ai_template_file_map_payment.xml",

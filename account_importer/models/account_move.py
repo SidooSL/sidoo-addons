@@ -13,7 +13,8 @@ class AccountMove(models.Model):
 
     def action_reconcile(self):
         for move_id in self:
-            move_id.line_ids.remove_move_reconcile()
+            if not self.env.context.get("skip_remove_reconcile", False):
+                move_id.line_ids.remove_move_reconcile()
             for invoice in move_id.filtered(lambda move: move.is_invoice()):
                 move_lines = invoice.payment_move_ids.line_ids.filtered(
                     lambda line: line.account_type

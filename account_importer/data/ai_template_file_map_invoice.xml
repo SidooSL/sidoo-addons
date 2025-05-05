@@ -72,7 +72,7 @@
 
         <field name="col17_type">direct</field>
         <field name="col17_direct_name">invoice_line_ids/product_id</field>
-        <field name="col17_lambda">get_id_by_name</field>
+        <field name="col17_lambda">get_id_by_ref</field>
 
         <field name="col18_type">direct</field>
         <field name="col18_direct_name">invoice_line_ids/quantity</field>
@@ -103,6 +103,12 @@
         <field name="col24_related_field_name">payment_move_ids</field>
         <field name="col24_related_model_name">account.move</field>
         <field name="col24_lambda">get_ids_by_ref</field>
+
+        <field name="col25_type">relational</field>
+        <field name="col25_direct_name">account_payment_moves_invoices</field>
+        <field name="col25_related_field_name">payment_move_ids</field>
+        <field name="col25_related_model_name">account.move</field>
+        <field name="col25_lambda">get_ids_by_ref</field>
 
     </record>
 
