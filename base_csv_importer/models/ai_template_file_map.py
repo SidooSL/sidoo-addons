@@ -475,7 +475,6 @@ class AITemplateFileMap(models.Model):
             # From normalize_external_id, we can have a value like '****account_217001'
             valueArr = value.split("_")
             if len(valueArr) > 1:
-                # Última posición del array
                 value = valueArr[-1]
                 record = model.search([(name_field_name, "=", value)], limit=1)
         result = record.id if record else None
