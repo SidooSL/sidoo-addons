@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="account_asset_line_view_tree" model="ir.ui.view">
+        <field name="name">account.asset.line.view.tree</field>
+        <field name="model">account.asset.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type"/>
+                <field name="line_date"/>
+                <field name="line_days"/>
+                <field name="depreciated_value"/>
+                <field name="amount"/>
+                <field name="remaining_value"/>
+                <field name="init_entry"/>
+                <field name="move_check"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

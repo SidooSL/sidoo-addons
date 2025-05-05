@@ -1,0 +1,31 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_asset_initiated_assistant
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-05 07:02+0000\n"
+"PO-Revision-Date: 2025-05-05 07:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_asset_initiated_assistant
+#: model:ir.actions.act_window,name:account_asset_initiated_assistant.account_asset_line_action
+msgid "Account Asset Lines"
+msgstr "Líneas de activos"
+
+#. module: account_asset_initiated_assistant
+#: model_terms:ir.ui.view,arch_db:account_asset_initiated_assistant.account_asset_view_form
+msgid "Initiation Asset Lines"
+msgstr "Iniciación Líneas de activos"
+
+#. module: account_asset_initiated_assistant
+#: model:ir.actions.server,name:account_asset_initiated_assistant.action_account_asset_line_check_init_entry
+msgid "Mark Done Depreciations"
+msgstr "Marcar amortizaciones realizadas"
