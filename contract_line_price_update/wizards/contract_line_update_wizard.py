@@ -35,14 +35,14 @@ class ContractLineUpdateWizard(models.TransientModel):
             raise UserError(_("No contract lines selected"))
 
         return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'contract.line.update.confirm.wizard',
-            'view_mode': 'form',
-            'target': 'new',
-            'context': {
-                'default_contract_line_ids': self.contract_line_ids.ids,
-                'default_factor': self.factor,
-                'default_count_line': self.count_line,
-                'default_output_type': self.env.context.get("default_output_type"),
-            }
+            "type": "ir.actions.act_window",
+            "res_model": "contract.line.update.confirm.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+                "default_contract_line_ids": self.contract_line_ids.ids,
+                "default_factor": self.factor,
+                "default_count_line": self.count_line,
+                "default_output_type": self.env.context.get("default_output_type"),
+            },
         }

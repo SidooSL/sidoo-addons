@@ -1,27 +1,35 @@
-from odoo import fields, models, _
+from odoo import _, fields, models
 
 
 class ContractLineUpdateConfirmWizard(models.TransientModel):
-    _name = 'contract.line.update.confirm.wizard'
-    _description = 'Confirmation Wizard for Contract Line Update'
+    _name = "contract.line.update.confirm.wizard"
+    _description = "Confirmation Wizard for Contract Line Update"
 
-    contract_line_ids = fields.Many2many('contract.line', string='Contract Lines', required=True)
-    factor = fields.Float('Multiplier', required=True)
-    output_type = fields.Selection([
-        ("_contract_output", "Contract"),
-        ("_contract_line_output", "Contract Line"),
-    ], string="To show", required=True)
-    count_line = fields.Integer('Number of Lines')
+    contract_line_ids = fields.Many2many(
+        "contract.line", string="Contract Lines", required=True
+    )
+    factor = fields.Float("Multiplier", required=True)
+    output_type = fields.Selection(
+        [
+            ("_contract_output", "Contract"),
+            ("_contract_line_output", "Contract Line"),
+        ],
+        string="To show",
+        required=True,
+    )
+    count_line = fields.Integer("Number of Lines")
 
     def confirm_update(self):
         for line in self.contract_line_ids:
             old_price = line.price_unit
             new_price = old_price * self.factor
-            line.write({
-                'prev_price': old_price,
-                'price_unit': new_price,
-                'last_mass_update_date': fields.Datetime.now(),
-            })
+            line.write(
+                {
+                    "prev_price": old_price,
+                    "price_unit": new_price,
+                    "last_mass_update_date": fields.Datetime.now(),
+                }
+            )
             self._post_edit_info_message(line, old_price, new_price)
         return getattr(self, self.output_type)()
 
