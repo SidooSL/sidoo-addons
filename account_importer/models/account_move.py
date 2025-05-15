@@ -17,9 +17,10 @@ class AccountMove(models.Model):
                 move_id.line_ids.remove_move_reconcile()
             for invoice in move_id.filtered(lambda move: move.is_invoice()):
                 move_lines = invoice.payment_move_ids.line_ids.filtered(
-                    lambda line: line.account_type
+                    lambda line, partner_id=invoice.partner_id.id: line.account_type
                     in ("asset_receivable", "liability_payable")
                     and not line.reconciled
+                    and (line.partner_id.id == partner_id or not line.partner_id)
                 )
                 for line in move_lines:
                     invoice.js_assign_outstanding_line(line.id)
