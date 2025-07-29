@@ -13,7 +13,7 @@ Features
 ========
 
 * **Smart Button**: Adds a "CRM Attachments" smart button to the partner form view
-* **Centralized Access**: View all attachments from CRM leads/opportunities related to a partner in one place  
+* **Centralized Access**: View all attachments from CRM leads/opportunities related to a partner in one place
 * **Read-Only View**: Provides a safe, read-only view of attachments (create and edit are disabled)
 * **Intuitive Navigation**: Easy access to lead attachments directly from the partner record
 
