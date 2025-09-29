@@ -1,4 +1,4 @@
-from odoo import fields, models, api, _
+from odoo import api, fields, models
 
 
 class ProductTemplate(models.Model):
@@ -8,7 +8,7 @@ class ProductTemplate(models.Model):
         default=False,
     )
 
-    @api.onchange('type')
+    @api.onchange("type")
     def onchange_type(self):
-        if self.type != 'consu':
+        if self.type != "consu":
             self.is_returnable = False

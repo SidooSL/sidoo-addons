@@ -7,9 +7,9 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='sale_ok']/.." position="inside">
                 <div>
-                    <field name="is_returnable" 
+                    <field name="is_returnable"
                         attrs="{'invisible': [('type', '!=', 'consu')]}"/>
-                    <label for="is_returnable" 
+                    <label for="is_returnable"
                         attrs="{'invisible': [('type', '!=', 'consu')]}"/>
                 </div>
             </xpath>

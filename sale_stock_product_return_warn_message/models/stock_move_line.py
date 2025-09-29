@@ -1,10 +1,10 @@
-from odoo import fields, models, api, _
+from odoo import fields, models
 
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
     is_returnable = fields.Boolean(
-        related='product_id.product_tmpl_id.is_returnable',
+        related="product_id.product_tmpl_id.is_returnable",
         store=True,
     )
