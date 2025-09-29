@@ -28,9 +28,8 @@
         "sale",
     ],
     "data": [
-        'data/ir_config_parameter_data.xml',
-        'views/product_template_views.xml',
-        'views/stock_picking_views.xml',
+        "data/ir_config_parameter_data.xml",
+        "views/product_template_views.xml",
+        "views/stock_picking_views.xml",
     ],
-
 }
