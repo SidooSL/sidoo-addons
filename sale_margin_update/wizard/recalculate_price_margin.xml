@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <record id="recalculate_price_margin_view_form" model="ir.ui.view">
+        <field name="name">recalculate_price_margin.view.form</field>
+        <field name="model">sale.recalculate.price.margin</field>
+        <field name="arch" type="xml">
+            <form string="Recalculate Price by Margin">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Update Price by Margin</h1>
+                    </div>
+                    <group>
+                        <field name="sale_margin_percent"/>
+                        <field name="line_id" invisible="1" />
+                        <field name="order_id" invisible="1" />
+                    </group>
+                    <div class="alert alert-info" role="alert">
+                        <p><strong>Info:</strong> This will recalculate the unit price based on the specified margin percentage.</p>
+                        <p>Only lines with products and cost price will be updated.</p>
+                    </div>
+                </sheet>
+                <footer>
+                    <button
+                        name="recalculate_price_margin"
+                        string="Recalculate"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
