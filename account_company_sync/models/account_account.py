@@ -6,6 +6,14 @@ class AccountAccount(models.Model):
 
     active = fields.Boolean(default=True)
 
+    def _get_asset_field_name(self):
+        """Determine which asset field to use based on installed modules"""
+        if "asset_profile_id" in self._fields:
+            return "asset_profile_id"  # OCA account_asset_management
+        elif "asset_model" in self._fields:
+            return "asset_model"  # Enterprise account_asset
+        return None
+
     def get_company_to_sync(self):
         return (
             self.env["res.company"]
@@ -20,6 +28,11 @@ class AccountAccount(models.Model):
     def find_target_record(self, field, target_company):
         if not self[field]:
             return False
+
+        # Check if field exists in current model
+        if field not in self._fields:
+            return False
+
         model = self._fields[field].comodel_name
         if "ids" in field:
             if "company_id" in self.env[model]._fields:
@@ -37,17 +50,32 @@ class AccountAccount(models.Model):
                 target_record = self[field]
             return target_record.ids if target_record else False
         else:
-            target_record = (
-                self.env[model]
-                .sudo()
-                .search(
-                    [
-                        ("name", "=", self[field].name),
-                        ("company_id", "=", target_company.id),
-                    ],
-                    limit=1,
+            # Special handling for asset models that might have different search criteria
+            if field in ("asset_profile_id", "asset_model"):
+                domain = [("company_id", "=", target_company.id)]
+
+                # For asset_profile_id (OCA), search by name
+                if field == "asset_profile_id":
+                    domain.append(("name", "=", self[field].name))
+                # For asset_model (Enterprise), search by name and state=model
+                elif field == "asset_model":
+                    domain.extend(
+                        [("name", "=", self[field].name), ("state", "=", "model")]
+                    )
+
+                target_record = self.env[model].sudo().search(domain, limit=1)
+            else:
+                target_record = (
+                    self.env[model]
+                    .sudo()
+                    .search(
+                        [
+                            ("name", "=", self[field].name),
+                            ("company_id", "=", target_company.id),
+                        ],
+                        limit=1,
+                    )
                 )
-            )
         return target_record.id if target_record else False
 
     def compare_and_update_fields(self, target_account):
@@ -58,9 +86,6 @@ class AccountAccount(models.Model):
             "deprecated": self.deprecated,
             "centralized": self.centralized,
             "currency_id": self.currency_id.id,
-            "asset_profile_id": self.find_target_record(
-                "asset_profile_id", target_account.company_id
-            ),
             "group_id": self.find_target_record("group_id", target_account.company_id),
             "tax_ids": self.find_target_record("tax_ids", target_account.company_id),
             "tag_ids": self.find_target_record("tag_ids", target_account.company_id),
@@ -68,6 +93,13 @@ class AccountAccount(models.Model):
                 "allowed_journal_ids", target_account.company_id
             ),
         }
+
+        # Add asset field based on available module
+        asset_field = self._get_asset_field_name()
+        if asset_field:
+            fields_to_sync[asset_field] = self.find_target_record(
+                asset_field, target_account.company_id
+            )
 
         updates = {}
         for field, value in fields_to_sync.items():
@@ -93,22 +125,26 @@ class AccountAccount(models.Model):
             limit=1,
         )
         if not account:
-            account = self.sudo().copy(
-                {
-                    "company_id": company_id.id,
-                    "code": self.code,
-                    "name": self.name,
-                    "asset_profile_id": self.find_target_record(
-                        "asset_profile_id", company_id
-                    ),
-                    "group_id": self.find_target_record("group_id", company_id),
-                    "tax_ids": self.find_target_record("tax_ids", company_id),
-                    "tag_ids": self.find_target_record("tag_ids", company_id),
-                    "allowed_journal_ids": self.find_target_record(
-                        "allowed_journal_ids", company_id
-                    ),
-                }
-            )
+            copy_vals = {
+                "company_id": company_id.id,
+                "code": self.code,
+                "name": self.name,
+                "group_id": self.find_target_record("group_id", company_id),
+                "tax_ids": self.find_target_record("tax_ids", company_id),
+                "tag_ids": self.find_target_record("tag_ids", company_id),
+                "allowed_journal_ids": self.find_target_record(
+                    "allowed_journal_ids", company_id
+                ),
+            }
+
+            # Add asset field based on available module
+            asset_field = self._get_asset_field_name()
+            if asset_field:
+                copy_vals[asset_field] = self.find_target_record(
+                    asset_field, company_id
+                )
+
+            account = self.sudo().copy(copy_vals)
         else:
             self.compare_and_update_fields(account)
 
