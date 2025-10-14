@@ -37,6 +37,16 @@ To use the functionality of this module, you need to:
 #. Click on Sync to create the accounts in the selected companies.
 #. Alternatively, in the chart of accounts list view, you can select the accounts you wish to replicate and use the action available in the list to open the wizard.
 
+Asset Management Compatibility
+==============================
+
+This module is compatible with both asset management systems:
+
+* **OCA account_asset_management**: Uses the ``asset_profile_id`` field
+* **Odoo Enterprise account_asset**: Uses the ``asset_model`` field
+
+The module automatically detects which asset management module is installed and synchronizes the appropriate asset field when replicating accounts across companies.
+
 
 Credits
 =======
