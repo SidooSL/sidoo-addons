@@ -1,0 +1,21 @@
+<odoo noupdate="1">
+    <record model="ir.config_parameter" id="remove_count" forcecreate="True">
+        <field name="key">customize.remove_count</field>
+        <field name="value" type="int">500</field>
+    </record>
+
+    <record model="ir.config_parameter" id="date_from" forcecreate="True">
+        <field name="key">customize.date_from</field>
+        <field name="value">2022-01-01</field>
+    </record>
+
+    <record model="ir.config_parameter" id="date_to" forcecreate="True">
+        <field name="key">customize.date_to</field>
+        <field name="value">2022-12-31</field>
+    </record>
+
+    <record model="ir.config_parameter" id="move_types" forcecreate="True">
+        <field name="key">customize.move_types</field>
+        <field name="value">out_invoice,</field>
+    </record>
+</odoo>

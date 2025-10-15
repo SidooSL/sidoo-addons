@@ -162,6 +162,7 @@
         <field name="arch" type="xml">
             <search>
                 <filter string="Con errores" name="has_errors" domain="[('error_ids', '!=', False)]"/>
+                <field name="col1" string="Columna 1"/>
                 <group expand="1" string="Agrupaciones">
                     <filter
                         name="group_by_file_id"
