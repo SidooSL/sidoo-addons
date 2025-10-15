@@ -73,7 +73,7 @@ class AITemplateFileMap(models.Model):
                     "batch_id": record.batch_id.id,
                 }
             )
-            return
+            raise e
 
         try:
             has_to_create = True
@@ -254,9 +254,6 @@ class AITemplateFileMap(models.Model):
 
     @api.model
     def handle_field_value(self, field, value, model, record):
-        _logger.info(
-            f"Applying lambda: {field['lambda']} field: {field['direct_name']} with value: {value} and model: {model} and record: {record}"
-        )
         if "lambda" not in field.keys():
             raise ValidationError(
                 _(
@@ -278,16 +275,18 @@ class AITemplateFileMap(models.Model):
             ),
             "get_ids_by_ref": lambda: None
             if not value
+            or not any(
+                ref.strip()
+                and ref not in ["", "0", "0.0"]
+                and self.get_id_by_ref(model, ref.strip(), raise_if_not_found=False)
+                for ref in value.split(",")
+            )
             else [
-                (
-                    6,
-                    0,
-                    [
-                        self.get_id_by_ref(model, ref.strip(), raise_if_not_found=True)
-                        for ref in value.split(",")
-                        if ref and ref.strip()
-                    ],
-                )
+                (4, self.get_id_by_ref(model, ref.strip(), raise_if_not_found=False))
+                for ref in value.split(",")
+                if ref not in ["", "0", "0.0"]
+                and ref.strip()
+                and self.get_id_by_ref(model, ref.strip(), raise_if_not_found=False)
             ],
             "get_id_by_ref_or_default": lambda: self.get_id_by_ref_or_default(
                 model, value
@@ -295,7 +294,9 @@ class AITemplateFileMap(models.Model):
             or value,
             "boolean": lambda: getattr(record, field["col_name"], False)
             in ["1", "true", "True", True],
-            "float": lambda: float(value.replace(",", ".")) if value else None,
+            "float": lambda: float(value.replace(",", "."))
+            if value and value != ""
+            else None,
             "integer": lambda: int(value) if value else None,
             "date": lambda: self._parse_date(value) if value else None,
             "direct_lowered": lambda: getattr(record, field["col_name"], False).lower()
@@ -327,6 +328,8 @@ class AITemplateFileMap(models.Model):
     def _parse_date(self, date_value):
         """Convierte una cadena en fecha"""
         try:
+            if date_value in ["", "0", "0.0"]:
+                return False
             for char in ["/", ".", " ", ",", ":"]:
                 date_value = date_value.replace(char, "-")
             _no_use = datetime.datetime.strptime(date_value, "%Y-%m-%d")
@@ -451,6 +454,16 @@ class AITemplateFileMap(models.Model):
 
     @api.model
     def get_id_by_name(self, model_name, value, raise_if_not_found=False):
+        if value in ["", "0", "0.0"]:
+            if raise_if_not_found:
+                raise ValidationError(
+                    _(
+                        f"El campo '{model_name}' no puede estar vacío. "
+                        f"El valor '{value}' no se pudo mapear."
+                    )
+                )
+            else:
+                return False
         model = self.env[model_name]
         name_field_name = "name"
         if model_name in ["account.account"]:
@@ -458,6 +471,12 @@ class AITemplateFileMap(models.Model):
         if model_name in ["res.partner.bank"]:
             name_field_name = "acc_number"
         record = model.search([(name_field_name, "=", value)], limit=1)
+        if not record:
+            # From normalize_external_id, we can have a value like '****account_217001'
+            valueArr = value.split("_")
+            if len(valueArr) > 1:
+                value = valueArr[-1]
+                record = model.search([(name_field_name, "=", value)], limit=1)
         result = record.id if record else None
         if not result and raise_if_not_found:
             raise ValidationError(
@@ -480,6 +499,8 @@ class AITemplateFileMap(models.Model):
                 raise_if_not_found=False,
             )
         if not result:
+            if model == "account.payment":
+                return self.get_id_by_ref("account.move", value, raise_if_not_found)
             return self.get_id_by_name(model, value, raise_if_not_found)
         if raise_if_not_found and not result:
             raise ValidationError(
