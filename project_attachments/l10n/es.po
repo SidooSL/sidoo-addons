@@ -1,0 +1,27 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_attachments
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-28 15:51+0000\n"
+"PO-Revision-Date: 2025-10-28 15:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_attachments
+#: model:ir.model.fields,field_description:project_attachments.field_project_project__attachment_count
+#: model_terms:ir.ui.view,arch_db:project_attachments.project_project_view_form_inherit_attachments
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: project_attachments
+#: model:ir.model,name:project_attachments.model_project_project
+msgid "Project"
+msgstr "Proyecto"
