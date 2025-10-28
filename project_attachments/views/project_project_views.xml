@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_form_inherit_attachments" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.attachments</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object" name="action_view_attachments" icon="fa-files-o">
+                    <field name="attachment_count" widget="statinfo" string="Attachments"/>
+                </button>
+            </xpath>
+            <!-- Add attachment_count field for visibility -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="attachment_count" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
