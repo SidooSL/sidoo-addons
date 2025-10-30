@@ -3,6 +3,7 @@
     "version": "17.0.1.0.0",
     "category": "Sales/Purchase",
     "summary": 'Transfer purchase price, "cost", to purchase order line unit cost',
+    "author": "Óscar Soto, SDi",
     "license": "LGPL-3",
     "description": """
 Transfer Purchase Price to Purchase Order Line
