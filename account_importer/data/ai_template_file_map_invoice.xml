@@ -1,6 +1,6 @@
 <odoo>
     <record id="account_importer.ai_template_file_map_invoices" model="ai.template.file.map">
-        <field name="model_id" ref="account.model_account_move"/>
+        <field name="model_id" ref="account.model_account_move" />
 
         <field name="col2_type">direct</field>
         <field name="col2_direct_name">ref</field>
@@ -104,22 +104,18 @@
         <field name="col24_related_model_name">account.move</field>
         <field name="col24_lambda">get_ids_by_ref</field>
 
-        <field name="col25_type">relational</field>
-        <field name="col25_direct_name">account_payment_moves_invoices</field>
-        <field name="col25_related_field_name">payment_move_ids</field>
-        <field name="col25_related_model_name">account.move</field>
-        <field name="col25_lambda">get_ids_by_ref</field>
-
     </record>
 
-    <record id="account_importer.ai_template_file_invoice_action_post" model="ai.template.model.actions">
-        <field name="mapper_id" ref="account_importer.ai_template_file_map_invoices"/>
+    <record id="account_importer.ai_template_file_invoice_action_post"
+        model="ai.template.model.actions">
+        <field name="mapper_id" ref="account_importer.ai_template_file_map_invoices" />
         <field name="action">action_post</field>
         <field name="sequence">10</field>
     </record>
 
-    <record id="account_importer.ai_template_file_invoice_action_reconcile" model="ai.template.model.actions">
-        <field name="mapper_id" ref="account_importer.ai_template_file_map_invoices"/>
+    <record id="account_importer.ai_template_file_invoice_action_reconcile"
+        model="ai.template.model.actions">
+        <field name="mapper_id" ref="account_importer.ai_template_file_map_invoices" />
         <field name="action">action_reconcile</field>
         <field name="sequence">20</field>
     </record>
