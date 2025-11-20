@@ -44,6 +44,7 @@
 
     <menuitem id="importer_root"
               name="Importador Sidoo"
+              web_icon="base_csv_importer,static/description/icon.png"
               sequence="10" />
     <menuitem id="importer_bundle"
               name="Importaciones"

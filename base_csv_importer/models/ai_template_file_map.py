@@ -401,7 +401,7 @@ class AITemplateFileMap(models.Model):
         """Convierte una cadena en float manejando separadores de miles y decimales"""
         normalized = self._normalize_numeric_value(float_value)
         if normalized is None:
-            return None
+            return 0.0
         
         try:
             return float(normalized)
@@ -462,8 +462,7 @@ class AITemplateFileMap(models.Model):
                 odoo_vals[field["destination_field"]] = result
 
             if (
-                field["destination_field"] in odoo_vals
-                and not odoo_vals[field["destination_field"]]
+                field["destination_field"] in odoo_vals and not odoo_vals[field["destination_field"]] and not field.get("lambda")
             ):
                 odoo_vals.pop(field["destination_field"], None)
 

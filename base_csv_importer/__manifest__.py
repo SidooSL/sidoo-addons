@@ -32,6 +32,7 @@
         "sale_management",
         "account",
     ],
+    "application": True,
     "data": [
         "data/ai_template_type.xml",
         "data/maps/ai_template_file_map_contact.xml",

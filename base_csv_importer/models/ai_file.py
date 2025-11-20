@@ -25,38 +25,71 @@ class AIFile(models.Model):
             ("queued", "=", False),
             ("header", "=", False),
         ]
-        record_count = self.env["ai.record"].search_count(domain)
-        if not record_count:
+        all_records = self.env["ai.record"].search(domain)
+        if not all_records:
             return
+
+        first_record = all_records[0]
+        has_tomany = self.env["ai.template.file.map"].has_tomany(first_record)
         size = (
             self.template_id.job_record_count or self.bundle_id.job_record_count or 100
         )
-        for i in range(0, record_count, size):
-            batch_records = self.env["ai.record"].search(domain, limit=size, offset=i)
-            batch_id = self.env["ai.record.batch"].create(
-                {
-                    "file_id": self.id,
-                    "record_ids": [(6, 0, batch_records.ids)],
-                }
-            )
-        first_record = self.env["ai.record"].search(domain, limit=1)
-        has_tomany = self.env["ai.template.file.map"].has_tomany(first_record)
-        batch_ids = self.env["ai.record.batch"].search(
-            [
-                ("file_id", "=", self.id),
-            ]
-        )
-        if has_tomany and batch_ids:
-            previous_batch_id = batch_ids[0]
-            for batch_id in batch_ids:
-                if batch_id != previous_batch_id:
-                    for record in batch_id.record_ids:
-                        if not record.col1:
-                            record.batch_id = previous_batch_id
-                        else:
-                            break
-                previous_batch_id = batch_id
 
+        if not has_tomany:
+            record_count = len(all_records)
+            for i in range(0, record_count, size):
+                batch_records = all_records[i : i + size]
+                self.env["ai.record.batch"].create(
+                    {
+                        "file_id": self.id,
+                        "record_ids": [(6, 0, batch_records.ids)],
+                    }
+                )
+        else:
+            # Group records by col1 value (all records with same col1 go together)
+            import logging
+            _logger = logging.getLogger(__name__)
+            
+            # Group records by col1 value
+            groups_dict = {}
+            for record in all_records:
+                col1_key = record.col1 or 'empty'  # Handle empty col1 values
+                if col1_key not in groups_dict:
+                    groups_dict[col1_key] = []
+                groups_dict[col1_key].append(record.id)
+            
+            # Convert to list of groups
+            groups = list(groups_dict.values())
+            
+            _logger.info(f"Total records: {len(all_records)}")
+            _logger.info(f"Total groups created: {len(groups)}")
+            for i, group in enumerate(groups):
+                _logger.info(f"Group {i}: {len(group)} records")
+
+            # Create batches from the groups
+            current_batch_records_ids = []
+            for group in groups:
+                if len(current_batch_records_ids) + len(group) > size:
+                    if current_batch_records_ids:
+                        self.env["ai.record.batch"].create(
+                            {
+                                "file_id": self.id,
+                                "record_ids": [(6, 0, current_batch_records_ids)],
+                            }
+                        )
+                    current_batch_records_ids = group
+                else:
+                    current_batch_records_ids.extend(group)
+
+            if current_batch_records_ids:
+                self.env["ai.record.batch"].create(
+                    {
+                        "file_id": self.id,
+                        "record_ids": [(6, 0, current_batch_records_ids)],
+                    }
+                )
+
+        batch_ids = self.env["ai.record.batch"].search([("file_id", "=", self.id)])
         for batch_id in batch_ids:
             batch_id.queue_batch()
         self.queued = True
