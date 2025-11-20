@@ -21,7 +21,36 @@ class AIRecordBatch(models.Model):
     job_state = fields.Selection(string="Estado del Job", related="job_id.state")
     error_ids = fields.One2many("ai.error", "batch_id", string="Errores")
 
+    def _process_logical_record(
+        self, odoo_vals, external_id_name, record_id, write=False
+    ):
+        """Processes a single logical record in an isolated job."""
+        record = self.env["ai.record"].browse(record_id)
+        try:
+            if write:
+                self.write_odoo_record(record, odoo_vals)
+            else:
+                self.create_odoo_record(record, odoo_vals, external_id_name)
+        except Exception as e:
+            error_traceback = traceback.format_exc()
+            _logger.error(
+                f"Error al procesar el registro lógico para el registro {record.id}: {str(e)}\n{error_traceback}"
+            )
+            # Associate error with the batch and the specific record
+            self.env["ai.error"].create(
+                {
+                    "name": str(e),
+                    "stacktrace": error_traceback,
+                    "record_id": record.id,
+                    "batch_id": record.batch_id.id,
+                }
+            )
+
     def process_batch(self, record_sublist=False):  # noqa
+        """
+        Groups records from a batch into logical records (especially for to-many relations)
+        and queues a separate job for each logical record.
+        """
         if record_sublist:
             records = sorted(record_sublist, key=lambda x: x.sequence)
         else:
@@ -30,87 +59,74 @@ class AIRecordBatch(models.Model):
             )
         if not records:
             return
-        record = records[0] if not records[0].header else records[1]
-        if record.file_id.skip:
-            return
-        has_tomany = False
-        if records:
-            has_tomany = self.env["ai.template.file.map"].has_tomany(record)
 
-        external_id = False
-        model = record.mapped("file_id.template_id.mapper_id.model_id.model")[0]
-        value = record.col1 or ""
-        previous_external_id = self.env["ai.template.file.map"].normalize_external_id(
-            model, value, record
-        )
-        has_tomanay_loaded = False
-        odoo_vals = {}
+        first_record = records[0]
+        if first_record.file_id.skip:
+            return
+
+        has_tomany = self.env["ai.template.file.map"].has_tomany(first_record)
+        if not has_tomany:
+            # Simple case: one job per record
+            for record in records:
+                self._queue_single_record_job(record)
+            return
+
+        # Complex case: group records with to-many fields
+        model = first_record.file_id.template_id.mapper_id.model_id.model
+        group_head_record = None
+        group_external_id = None
+        group_vals = {}
+
+        with_errors = False
         for record in records:
             if record.header:
                 continue
-            _logger.info(
-                f"Processing record {record.id} of batch {self.id} from template {self.file_id.template_id.name}"
-            )
-            external_id_name = record.col1 or ""
+
             try:
-                external_id_name = self.env[
+                current_external_id = self.env[
                     "ai.template.file.map"
-                ].normalize_external_id(
-                    record.mapped("file_id.template_id.mapper_id.model_id.model")[0],
-                    external_id_name,
-                    record,
-                )
-                external_id = (
-                    self.env.ref(external_id_name, raise_if_not_found=False)
-                    if external_id_name
-                    else False
-                )
+                ].normalize_external_id(model, record.col1 or "", record)
+
+                # If a new master record starts (and it's not the very first one)
                 if (
-                    has_tomany
-                    and previous_external_id != external_id_name
+                    group_external_id
                     and record.col1
+                    and group_external_id != current_external_id
                 ):
-                    external_id = self.env.ref(
-                        previous_external_id, raise_if_not_found=False
+                    # Queue the completed group for processing
+                    self._queue_logical_record_job(
+                        group_vals, group_external_id, group_head_record.id
                     )
-                    if external_id:
-                        self.write_odoo_record(record, odoo_vals)
-                    else:
-                        self.create_odoo_record(record, odoo_vals, previous_external_id)
-                    previous_external_id = external_id_name
-                    odoo_vals = self.env["ai.template.file.map"].process_record(record)
-                    to_many_values = self.env["ai.template.file.map"].map_tomany(record)
-                    to_many_keys = to_many_values.keys()
-                    for key in to_many_keys:
-                        if key in odoo_vals:
-                            odoo_vals[key].append(to_many_values[key][0])
-                        else:
-                            odoo_vals.update(to_many_values)
-                    has_tomanay_loaded = True
-                elif has_tomany:
-                    if not has_tomanay_loaded:
-                        odoo_vals = self.env["ai.template.file.map"].process_record(
-                            record
-                        )
-                        if not odoo_vals:
-                            # Error ya registrado, pasamos al siguiente registro
-                            continue
-                    to_many_values = self.env["ai.template.file.map"].map_tomany(record)
-                    to_many_keys = to_many_values.keys()
-                    for key in to_many_keys:
-                        if key in odoo_vals:
-                            odoo_vals[key].append(to_many_values[key][0])
-                        else:
-                            odoo_vals.update(to_many_values)
-                    has_tomanay_loaded = True
-                else:
-                    self.env["ai.template.file.map"].process_record(record)
-            except Exception as e:
-                error_traceback = traceback.format_exc()
-                _logger.error(
-                    f"Error al procesar el registro {record.id}: {str(e)}\n{error_traceback}"
-                )
+                    # Reset for the new group
+                    group_vals = {}
 
+                # If this is the first line of a new group
+                if not group_vals:
+                    group_head_record = record
+                    group_external_id = current_external_id
+                    group_vals = self.env["ai.template.file.map"].process_record(
+                        record
+                    )
+                    if not group_vals:
+                        continue  # Record was invalid, skip to next. Error logged in process_record
+
+                    # Add first to-many line
+                    to_many_vals = self.env["ai.template.file.map"].map_tomany(record)
+                    group_vals.update(to_many_vals)
+                else:  # Append to-many lines to the existing group
+                    to_many_vals = self.env["ai.template.file.map"].map_tomany(record)
+                    for key, val in to_many_vals.items():
+                        if key in group_vals:
+                            group_vals[key].extend(val)
+                        else:
+                            group_vals[key] = val
+            except Exception as e:
+                # Log errors during the grouping/preparation phase
+                error_traceback = traceback.format_exc()
+                with_errors = True
+                _logger.error(
+                    f"Error preparing job for record {record.id}: {str(e)}\n{error_traceback}"
+                )
                 self.env["ai.error"].create(
                     {
                         "name": str(e),
@@ -119,30 +135,65 @@ class AIRecordBatch(models.Model):
                         "batch_id": self.id,
                     }
                 )
-        external_id = self.env.ref(external_id_name, raise_if_not_found=False)
-        if not external_id and odoo_vals and previous_external_id:
-            try:
-                existing_id = self.env.ref(
-                    previous_external_id, raise_if_not_found=False
-                )
-                if existing_id:
-                    self.write_odoo_record(record, odoo_vals)
-                else:
-                    self.create_odoo_record(record, odoo_vals, previous_external_id)
-            except Exception as e:
-                error_traceback = traceback.format_exc()
-                _logger.error(
-                    f"Error al procesar el registro {record.id}: {str(e)}\n{error_traceback}"
-                )
 
-                self.env["ai.error"].create(
-                    {
-                        "name": str(e),
-                        "stacktrace": error_traceback,
-                        "record_id": record.id,
-                        "batch_id": self.id,
-                    }
-                )
+        # Queue the last group of records
+        if not with_errors and group_vals:
+            self._queue_logical_record_job(
+                group_vals, group_external_id, group_head_record.id
+            )
+
+    def _queue_logical_record_job(self, odoo_vals, external_id_name, record_id):
+        """Helper to check for existing record and queue the processing job."""
+        record = self.env["ai.record"].browse(record_id)
+        try:
+            # Check if record exists to decide between write or create
+            record_exists = bool(
+                external_id_name
+                and self.env.ref(external_id_name, raise_if_not_found=False)
+            )
+            self.with_delay()._process_logical_record(
+                odoo_vals, external_id_name, record_id, write=record_exists
+            )
+        except Exception as e:
+            error_traceback = traceback.format_exc()
+            _logger.error(
+                f"Error queuing job for record {record.id}: {str(e)}\n{error_traceback}"
+            )
+            self.env["ai.error"].create(
+                {
+                    "name": str(e),
+                    "stacktrace": error_traceback,
+                    "record_id": record.id,
+                    "batch_id": self.id,
+                }
+            )
+
+    def _queue_single_record_job(self, record):
+        """Helper to prepare and queue a job for a single non-to-many record."""
+        try:
+            odoo_vals = self.env["ai.template.file.map"].process_record(record)
+            if not odoo_vals:
+                return  # Error already logged by process_record
+
+            model = record.file_id.template_id.mapper_id.model_id.model
+            external_id_name = self.env["ai.template.file.map"].normalize_external_id(
+                model, record.col1 or "", record
+            )
+
+            self._queue_logical_record_job(odoo_vals, external_id_name, record.id)
+        except Exception as e:
+            error_traceback = traceback.format_exc()
+            _logger.error(
+                f"Error preparing job for single record {record.id}: {str(e)}\n{error_traceback}"
+            )
+            self.env["ai.error"].create(
+                {
+                    "name": str(e),
+                    "stacktrace": error_traceback,
+                    "record_id": record.id,
+                    "batch_id": self.id,
+                }
+            )
 
     def queue_batch(self):
         for batch in self:
