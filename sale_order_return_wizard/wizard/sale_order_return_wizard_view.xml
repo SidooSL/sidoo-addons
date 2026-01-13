@@ -16,7 +16,7 @@
                             <field name="name"/>
                             <field name="scheduled_date"/>
                             <field name="state"/>
-                            <button string="Return" name="open_picking_return" type="object" icon="fa-external-link" context="{}" />
+                            <button string="Return" name="open_picking_return" type="object" icon="fa-external-link" context="{'order_id': parent.order_id}" />
                         </tree>
                     </field>
                 </group>

@@ -15,5 +15,6 @@ class StockPicking(models.Model):
             "context": {
                 "active_id": self.id,
                 "active_ids": [self.id],
+                "order_id": self._context.get("order_id"),
             },
         }

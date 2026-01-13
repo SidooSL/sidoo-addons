@@ -10,8 +10,12 @@
     "category": "Sales",
     "sequence": 1,
     "complexity": "easy",
-    "author": "Luis Adan Jimenez Hernandez, Sidoo Soluciones S.L.",
-    "depends": ["sale", "stock"],
+    "author": "Luis Adan Jimenez Hernandez, Jorge Quinteros, Sidoo Soluciones S.L.",
+    "depends": [
+        "sale",
+        "stock",
+        "stock_picking_return_lot",
+    ],
     "data": [
         "security/ir.model.access.csv",
         "views/sale_order_view.xml",
