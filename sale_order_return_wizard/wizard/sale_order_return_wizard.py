@@ -95,3 +95,33 @@ class SaleReturnWizard(models.TransientModel):
                                 )
                             )
                 record.order_return_wizard_lines = return_lines
+
+    def create_returns(self):
+        ReturnPicking = self.env["stock.return.picking"]
+        for picking in self.picking_ids:
+            return_picking = ReturnPicking.with_context(
+                active_id=picking.id, active_ids=[picking.id]
+            ).create(
+                {
+                    "move_dest_exists": False,
+                    "original_location_id": picking.location_id.id,
+                    "location_id": picking.location_id.id,
+                    "picking_id": picking.id,
+                }
+            )
+
+            return_picking._onchange_picking_id()
+            for return_line in self.order_return_wizard_lines:
+                return_move = return_picking.product_return_moves.filtered(
+                    lambda m, return_line=return_line: m.product_id.id
+                    == return_line.product_id.id
+                )
+                if return_move:
+                    return_move.quantity = return_line.quantity
+
+            products = self.order_return_wizard_lines.mapped("product_id")
+            return_picking.product_return_moves.filtered(
+                lambda m, products=products: m.product_id.id not in products.ids
+            ).unlink()
+
+            return_picking.create_returns()
