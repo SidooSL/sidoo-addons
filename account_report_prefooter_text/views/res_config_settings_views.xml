@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.invoice.footer.text</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='invoicing_settings']" position="inside">
+                <setting id="customer_invoice_footer_text_setting" string="Customer Invoice Footer Text" help="Custom text displayed before footer in customer invoices PDF">
+                    <field name="customer_invoice_footer_text" placeholder="Enter HTML text to display before footer in customer invoices..."/>
+                </setting>
+                <setting id="vendor_bill_footer_text_setting" string="Vendor Bill Footer Text" help="Custom text displayed before footer in vendor bills PDF">
+                    <field name="vendor_bill_footer_text" placeholder="Enter HTML text to display before footer in vendor bills..."/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
