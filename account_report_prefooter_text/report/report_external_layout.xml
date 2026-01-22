@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="custom_footer_invoice_text_standard" inherit_id="web.external_layout_standard">
-        <xpath expr="//div[@t-field='company.report_footer']" position="before">
+        <xpath expr="//div[@t-field='company.report_footer']/.." position="before">
             <t t-if="o._name == 'account.move'">
                 <!-- Customer invoice footer text -->
                 <t t-if="o.move_type in ('out_invoice', 'out_refund') and not is_html_empty(o.company_id.customer_invoice_footer_text)">
@@ -19,7 +19,7 @@
         </xpath>
     </template>
     <template id="custom_footer_invoice_text_boxed" inherit_id="web.external_layout_boxed">
-        <xpath expr="//span[@t-field='company.report_footer']/.." position="before">
+        <xpath expr="//span[@t-field='company.report_footer']/../.." position="before">
             <t t-if="o._name == 'account.move'">
                 <!-- Customer invoice footer text -->
                 <t t-if="o.move_type in ('out_invoice', 'out_refund') and not is_html_empty(o.company_id.customer_invoice_footer_text)">
