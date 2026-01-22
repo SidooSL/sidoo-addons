@@ -54,8 +54,8 @@ To adjust the paper format:
 1. Navigate to **Settings > Technical > Reporting > Paper Format**
 2. Open the **A4** format (or your default paper format)
 3. Increase the **Bottom Margin (mm)** field
-   - Default: 15mm
-   - Recommended with footer text: 25-35mm (depending on content length)
+   - Default: 32mm
+   - Recommended with footer text: 42mm (depending on content length)
 4. Save the changes
 
 This ensures that the custom footer text has adequate space to prevent it from displacing the rest of the company footer content and being cut off in the PDF.
