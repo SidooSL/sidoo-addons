@@ -45,6 +45,20 @@ Navigate to the **Invoicing Settings** section where you will find:
    - Translatable for multi-language environments
    - Placeholder: "Enter HTML text to display before footer in vendor bills..."
 
+### Paper Format Configuration
+
+> **⚠️ Important Recommendation**: If you add multi-line content in the footer texts, it's recommended to increase the **bottom margin** of your A4 paper format to prevent content overlap or truncation.
+
+To adjust the paper format:
+
+1. Navigate to **Settings > Technical > Reporting > Paper Format**
+2. Open the **A4** format (or your default paper format)
+3. Increase the **Bottom Margin (mm)** field
+   - Default: 15mm
+   - Recommended with footer text: 25-35mm (depending on content length)
+4. Save the changes
+
+This ensures that the custom footer text has adequate space to prevent it from displacing the rest of the company footer content and being cut off in the PDF.
 
 ## Features
 

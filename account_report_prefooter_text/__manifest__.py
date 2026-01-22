@@ -24,9 +24,6 @@
     ],
     "data": [
         "views/res_config_settings_views.xml",
-        "views/report_invoice.xml",
+        "report/report_external_layout.xml",
     ],
-    "installable": True,
-    "auto_install": False,
-    "application": False,
 }
