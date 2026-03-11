@@ -5,7 +5,7 @@
     "summary": "Add configurable HTML text before footer in customer and vendor invoices PDF",
     "description": """
         Account Report Prefooter Text
-        ============================
+        =============================
 
         Adds configurable HTML fields in Settings to display custom text
         before the footer in PDF invoices:
