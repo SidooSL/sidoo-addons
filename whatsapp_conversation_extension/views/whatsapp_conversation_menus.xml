@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        WhatsApp Conversation Extension - Menus, Actions, and Views
+
+        This file defines:
+        1. A new menu "WhatsApp Conversations" in the WhatsApp module
+        2. Two submenus with their corresponding actions:
+           - "All WhatsApp Conversations": displays all conversations
+           - "My WhatsApp Conversations": displays only conversations where the user is a member
+    -->
+
+    <!-- ============================================================ -->
+    <!-- ACTIONS -->
+    <!-- ============================================================ -->
+
+    <!-- Action for "All WhatsApp Conversations" submenu -->
+    <!-- Shows all WhatsApp conversations in the system -->
+    <!-- Restricted to group_whatsapp_view_all_conversations -->
+    <record id="whatsapp_conversation_all_action" model="ir.actions.act_window">
+        <field name="name">All WhatsApp Conversations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">discuss.channel</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[(4, ref('whatsapp_conversation_extension.group_whatsapp_view_all_conversations'))]" />
+        <!-- Use the WhatsApp-specific list and form views -->
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                   (0, 0, {'view_mode': 'list', 'view_id': ref('whatsapp.discuss_channel_view_list_whatsapp')}),
+                   (0, 0, {'view_mode': 'form', 'view_id': ref('whatsapp.discuss_channel_view_form')})]"/>
+        <!-- Filter to show only WhatsApp conversations -->
+        <field name="domain">[('channel_type', '=', 'whatsapp')]</field>
+        <field name="context">{'default_channel_type': 'whatsapp'}</field>
+        <field name="target">main</field>
+        <field name="help">
+            List of all WhatsApp conversations. These are channels that have been created for
+            WhatsApp messaging between your business and customers.
+        </field>
+    </record>
+
+    <!-- Action for "My WhatsApp Conversations" submenu -->
+    <!-- Shows only WhatsApp conversations where the current user is a member -->
+    <record id="whatsapp_conversation_my_action" model="ir.actions.act_window">
+        <field name="name">My WhatsApp Conversations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">discuss.channel</field>
+        <field name="view_mode">list,form</field>
+        <!-- Use the WhatsApp-specific list and form views -->
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                   (0, 0, {'view_mode': 'list', 'view_id': ref('whatsapp.discuss_channel_view_list_whatsapp')}),
+                   (0, 0, {'view_mode': 'form', 'view_id': ref('whatsapp.discuss_channel_view_form')})]"/>
+        <!-- Filter to show only WhatsApp conversations where the current user is a member.
+             uid is available as an integer (user ID) in domain evaluation context.
+             We traverse channel_member_ids -> partner_id -> user_ids to match the current user. -->
+        <field name="domain">[
+            ('channel_type', '=', 'whatsapp'),
+            ('channel_member_ids.partner_id.user_ids', 'in', [uid])
+        ]</field>
+        <field name="context">{'default_channel_type': 'whatsapp'}</field>
+        <field name="target">main</field>
+        <field name="help">
+            List of WhatsApp conversations where you are a member. Only conversations
+            that you have been added to or have participated in will appear here.
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- MENUS - WhatsApp module -->
+    <!-- ============================================================ -->
+
+    <!-- Parent menu "Conversations" under the WhatsApp main menu -->
+    <menuitem
+        id="whatsapp_conversation_menu_main"
+        name="Conversations"
+        parent="whatsapp.whatsapp_menu_main"
+        sequence="5"/>
+
+    <!-- Submenu "All WhatsApp Conversations" (under WhatsApp) - restricted -->
+    <menuitem
+        id="whatsapp_conversation_all_menu"
+        name="All Conversations"
+        parent="whatsapp_conversation_menu_main"
+        action="whatsapp_conversation_all_action"
+        groups="whatsapp_conversation_extension.group_whatsapp_view_all_conversations"
+        sequence="10"/>
+
+    <!-- Submenu "My WhatsApp Conversations" (under WhatsApp) -->
+    <menuitem
+        id="whatsapp_conversation_my_menu"
+        name="My Conversations"
+        parent="whatsapp_conversation_menu_main"
+        action="whatsapp_conversation_my_action"
+        sequence="20"/>
+
+    <!-- ============================================================ -->
+    <!-- MENUS - Discuss module -->
+    <!-- ============================================================ -->
+
+    <!-- Parent menu "WhatsApp Conversations" under the Discuss main menu -->
+    <menuitem
+        id="discuss_whatsapp_conversation_menu_main"
+        name="WhatsApp Conversations"
+        parent="mail.menu_root_discuss"
+        sequence="10"/>
+
+    <!-- Submenu "All WhatsApp Conversations" (under Discuss) - restricted -->
+    <menuitem
+        id="discuss_whatsapp_conversation_all_menu"
+        name="All WhatsApp Conversations"
+        parent="discuss_whatsapp_conversation_menu_main"
+        action="whatsapp_conversation_all_action"
+        groups="whatsapp_conversation_extension.group_whatsapp_view_all_conversations"
+        sequence="10"/>
+
+    <!-- Submenu "My WhatsApp Conversations" (under Discuss) -->
+    <menuitem
+        id="discuss_whatsapp_conversation_my_menu"
+        name="My WhatsApp Conversations"
+        parent="discuss_whatsapp_conversation_menu_main"
+        action="whatsapp_conversation_my_action"
+        sequence="20"/>
+
+</odoo>

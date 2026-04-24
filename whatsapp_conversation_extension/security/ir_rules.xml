@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--
+        Users with group_whatsapp_view_all_conversations can see ALL WhatsApp
+        channels, bypassing the mail module's default rule that restricts
+        discuss.channel visibility to channels where the user is a member.
+    -->
+    <record id="rule_discuss_channel_view_all_whatsapp" model="ir.rule">
+        <field name="name">WhatsApp: View all conversations (special group)</field>
+        <field name="model_id" ref="mail.model_discuss_channel"/>
+        <field name="groups" eval="[(4, ref('whatsapp_conversation_extension.group_whatsapp_view_all_conversations'))]"/>
+        <field name="domain_force">[('channel_type', '=', 'whatsapp')]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!--
+        Same group also needs read access to discuss.channel.member records of
+        those WhatsApp channels. The mail module's base rule restricts member
+        visibility to channels where is_member=True, which blocks seeing members
+        of channels the user doesn't belong to.
+    -->
+    <record id="rule_discuss_channel_member_view_all_whatsapp" model="ir.rule">
+        <field name="name">WhatsApp: View members of all conversations (special group)</field>
+        <field name="model_id" ref="mail.model_discuss_channel_member"/>
+        <field name="groups" eval="[(4, ref('whatsapp_conversation_extension.group_whatsapp_view_all_conversations'))]"/>
+        <field name="domain_force">[('channel_id.channel_type', '=', 'whatsapp')]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!--
+        group_whatsapp_member_manager: allow writing discuss.channel records of
+        WhatsApp type. The mail base rule (ir_rule_discuss_channel_all) restricts
+        writes to channels where is_member=True, which blocks managers who are
+        not members of the channel they are editing.
+    -->
+    <record id="rule_discuss_channel_write_whatsapp_manager" model="ir.rule">
+        <field name="name">WhatsApp: Managers can write WhatsApp channels</field>
+        <field name="model_id" ref="mail.model_discuss_channel"/>
+        <field name="groups" eval="[(4, ref('whatsapp_conversation_extension.group_whatsapp_member_manager'))]"/>
+        <field name="domain_force">[('channel_type', '=', 'whatsapp')]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!--
+        group_whatsapp_member_manager: allow create/write/unlink on
+        discuss.channel.member for WhatsApp channels. The mail base rule
+        (ir_rule_discuss_channel_member_create_is_member_group_user) restricts
+        adding non-self members to channels where is_member=True, blocking
+        managers who are not members of the channel.
+    -->
+    <record id="rule_discuss_channel_member_manage_whatsapp" model="ir.rule">
+        <field name="name">WhatsApp: Managers can add/remove members in WhatsApp channels</field>
+        <field name="model_id" ref="mail.model_discuss_channel_member"/>
+        <field name="groups" eval="[(4, ref('whatsapp_conversation_extension.group_whatsapp_member_manager'))]"/>
+        <field name="domain_force">[('channel_id.channel_type', '=', 'whatsapp')]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+</odoo>
