@@ -104,9 +104,7 @@ class AIRecordBatch(models.Model):
                 if not group_vals:
                     group_head_record = record
                     group_external_id = current_external_id
-                    group_vals = self.env["ai.template.file.map"].process_record(
-                        record
-                    )
+                    group_vals = self.env["ai.template.file.map"].process_record(record)
                     if not group_vals:
                         continue  # Record was invalid, skip to next. Error logged in process_record
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Minimal form view for WhatsApp conversations.
+        Accessible only via the "Edit Members" button (protected by Python AccessError).
+        Shows: name, WA account, phone, and editable members list.
+    -->
+    <record id="discuss_channel_view_form_whatsapp_minimal" model="ir.ui.view">
+        <field name="name">discuss.channel.form.whatsapp.minimal</field>
+        <field name="model">discuss.channel</field>
+        <field name="arch" type="xml">
+            <form string="WhatsApp Conversation">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Conversation Name"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="wa_account_id" readonly="1"/>
+                        <field name="whatsapp_number" readonly="1"/>
+                    </group>
+                    <separator string="Members"/>
+                    <field name="channel_member_ids" mode="list">
+                        <list string="Members" editable="bottom">
+                            <field name="partner_id" readonly="id or guest_id" required="not guest_id"/>
+                            <field name="guest_id" readonly="id or partner_id" required="not partner_id" optional="hide"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--
+        Inherits the WhatsApp Business Account form to add the member managers
+        field (editable for WA admins). Gestores assigned here can edit members
+        of ALL conversations linked to this account.
+    -->
+    <record id="whatsapp_account_view_form_managers" model="ir.ui.view">
+        <field name="name">whatsapp.account.view.form.managers</field>
+        <field name="model">whatsapp.account</field>
+        <field name="inherit_id" ref="whatsapp.whatsapp_account_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Insert a new <setting> block after the notify_user_ids setting block -->
+            <xpath expr="//setting[field[@name='notify_user_ids']]" position="after">
+                <setting string="Member Managers">
+                    <field name="whatsapp_member_manager_ids"
+                        widget="many2many_tags"
+                        placeholder="Select managers..."/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+    <!--
+        Inherits the official WhatsApp conversation list view to add an
+        "Edit Members" button per row, visible only if the current user is
+        a manager of the account linked to that channel (can_manage_whatsapp_members).
+    -->
+    <record id="discuss_channel_view_list_whatsapp_members_btn" model="ir.ui.view">
+        <field name="name">discuss.channel.view.list.whatsapp.members.btn</field>
+        <field name="model">discuss.channel</field>
+        <field name="inherit_id" ref="whatsapp.discuss_channel_view_list_whatsapp"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list/field[@name='channel_partner_ids']" position="after">
+                <!-- Computed boolean drives per-row button visibility -->
+                <field name="can_manage_whatsapp_members" column_invisible="1"/>
+                <button
+                    name="action_open_whatsapp_channel_form"
+                    string="Edit Members"
+                    type="object"
+                    icon="fa-users"
+                    title="Edit conversation members"
+                    invisible="not can_manage_whatsapp_members"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

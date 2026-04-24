@@ -294,8 +294,12 @@ class AITemplateFileMap(models.Model):
             or value,
             "boolean": lambda: getattr(record, field["col_name"], False)
             in ["1", "true", "True", True],
-            "float": lambda: self._parse_float(value) if value and value != "" else None,
-            "integer": lambda: self._parse_integer(value) if value and value != "" else None,
+            "float": lambda: self._parse_float(value)
+            if value and value != ""
+            else None,
+            "integer": lambda: self._parse_integer(value)
+            if value and value != ""
+            else None,
             "date": lambda: self._parse_date(value) if value else None,
             "direct_lowered": lambda: getattr(record, field["col_name"], False).lower()
             if value
@@ -327,19 +331,19 @@ class AITemplateFileMap(models.Model):
         """Normaliza una cadena numérica removiendo separadores y devolviendo formato estándar"""
         if not value or value in ["", "0", "0.0"]:
             return None
-        
+
         try:
             # Limpiar espacios
             clean_value = str(value).strip()
-            
+
             # Si no tiene separadores, devolver tal como está
             if not any(char in clean_value for char in [",", "."]):
                 return clean_value
-            
+
             # Contar puntos y comas para determinar el formato
             dot_count = clean_value.count(".")
             comma_count = clean_value.count(",")
-            
+
             # Caso: Solo puntos (formato inglés: 1000.50 o separador de miles 1.000)
             if comma_count == 0 and dot_count == 1:
                 parts = clean_value.split(".")
@@ -347,7 +351,7 @@ class AITemplateFileMap(models.Model):
                 if len(parts[1]) > 3:
                     return clean_value.replace(".", "")
                 return clean_value  # Formato decimal estándar
-            
+
             # Caso: Solo comas (formato europeo: 1000,50 o separador de miles 1,000)
             if dot_count == 0 and comma_count == 1:
                 parts = clean_value.split(",")
@@ -355,29 +359,29 @@ class AITemplateFileMap(models.Model):
                 if len(parts[1]) > 3:
                     return clean_value.replace(",", "")
                 return clean_value.replace(",", ".")  # Convertir coma decimal a punto
-            
+
             # Caso: Ambos separadores presentes
             if dot_count > 0 and comma_count > 0:
                 last_dot = clean_value.rfind(".")
                 last_comma = clean_value.rfind(",")
-                
+
                 if last_dot > last_comma:
                     # Formato inglés: 1,000.50 - coma es separador de miles
                     return clean_value.replace(",", "")
                 else:
                     # Formato europeo: 1.000,50 - punto es separador de miles
                     return clean_value.replace(".", "").replace(",", ".")
-            
+
             # Caso: Múltiples puntos (separador de miles europeo: 1.000.000)
             if dot_count > 1:
                 return clean_value.replace(".", "")
-            
+
             # Caso: Múltiples comas (separador de miles inglés: 1,000,000)
             if comma_count > 1:
                 return clean_value.replace(",", "")
-            
+
             return clean_value
-            
+
         except (ValueError, TypeError):
             return None
 
@@ -387,7 +391,7 @@ class AITemplateFileMap(models.Model):
         normalized = self._normalize_numeric_value(int_value)
         if normalized is None:
             return None
-        
+
         try:
             return int(float(normalized))  # Usar float para manejar decimales y truncar
         except (ValueError, TypeError) as e:
@@ -402,7 +406,7 @@ class AITemplateFileMap(models.Model):
         normalized = self._normalize_numeric_value(float_value)
         if normalized is None:
             return 0.0
-        
+
         try:
             return float(normalized)
         except (ValueError, TypeError) as e:
@@ -462,7 +466,9 @@ class AITemplateFileMap(models.Model):
                 odoo_vals[field["destination_field"]] = result
 
             if (
-                field["destination_field"] in odoo_vals and not odoo_vals[field["destination_field"]] and not field.get("lambda")
+                field["destination_field"] in odoo_vals
+                and not odoo_vals[field["destination_field"]]
+                and not field.get("lambda")
             ):
                 odoo_vals.pop(field["destination_field"], None)
 

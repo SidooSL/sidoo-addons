@@ -1,0 +1,166 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* whatsapp_conversation_extension
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-23 15:47+0000\n"
+"PO-Revision-Date: 2026-04-23 15:47+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.ui.menu,name:whatsapp_conversation_extension.whatsapp_conversation_all_menu
+msgid "All Conversations"
+msgstr "Todas las conversaciones"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.actions.act_window,name:whatsapp_conversation_extension.whatsapp_conversation_all_action
+#: model:ir.ui.menu,name:whatsapp_conversation_extension.discuss_whatsapp_conversation_all_menu
+msgid "All WhatsApp Conversations"
+msgstr "Todas las conversaciones de WhatsApp"
+
+#. module: whatsapp_conversation_extension
+#: model:res.groups,comment:whatsapp_conversation_extension.group_whatsapp_member_manager
+msgid ""
+"Allows managing the members of WhatsApp channels for which the user is "
+"assigned as a manager."
+msgstr ""
+"Permite gestionar los miembros de los canales de WhatsApp para los cuales "
+"el usuario está asignado como gestor."
+
+#. module: whatsapp_conversation_extension
+#: model:ir.model.fields,field_description:whatsapp_conversation_extension.field_discuss_channel__can_manage_whatsapp_members
+msgid "Can Manage Members"
+msgstr "Puede gestionar los miembros"
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.ui.view,arch_db:whatsapp_conversation_extension.discuss_channel_view_form_whatsapp_minimal
+msgid "Conversation Name"
+msgstr "Nombre de la conversación"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.ui.menu,name:whatsapp_conversation_extension.whatsapp_conversation_menu_main
+msgid "Conversations"
+msgstr "Conversaciones"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.model,name:whatsapp_conversation_extension.model_discuss_channel
+msgid "Discussion Channel"
+msgstr "Canal de conversaciones"
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.ui.view,arch_db:whatsapp_conversation_extension.discuss_channel_view_list_whatsapp_members_btn
+msgid "Edit Members"
+msgstr "Editar miembros"
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.ui.view,arch_db:whatsapp_conversation_extension.discuss_channel_view_list_whatsapp_members_btn
+msgid "Edit conversation members"
+msgstr "Editar los miembros de la conversación"
+
+#. module: whatsapp_conversation_extension
+#: model:res.groups,comment:whatsapp_conversation_extension.group_whatsapp_view_all_conversations
+msgid "Grants access to the list of all WhatsApp conversations in the system."
+msgstr "Concede acceso al listado de todas las conversaciones de WhatsApp del sistema."
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.actions.act_window,help:whatsapp_conversation_extension.whatsapp_conversation_my_action
+msgid ""
+"List of WhatsApp conversations where you are a member. Only conversations\n"
+"            that you have been added to or have participated in will appear here."
+msgstr ""
+"Listado de conversaciones de WhatsApp en las que eres miembro. Solo aparecerán\n"
+"            las conversaciones a las que has sido añadido o en las que has participado."
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.actions.act_window,help:whatsapp_conversation_extension.whatsapp_conversation_all_action
+msgid ""
+"List of all WhatsApp conversations. These are channels that have been created for\n"
+"            WhatsApp messaging between your business and customers."
+msgstr ""
+"Listado de todas las conversaciones de WhatsApp. Estos son canales que se han creado\n"
+"            para la mensajería de WhatsApp entre tu empresa y los clientes."
+
+#. module: whatsapp_conversation_extension
+#: model:ir.model.fields,field_description:whatsapp_conversation_extension.field_whatsapp_account__whatsapp_member_manager_ids
+#: model_terms:ir.ui.view,arch_db:whatsapp_conversation_extension.whatsapp_account_view_form_managers
+msgid "Member Managers"
+msgstr "Gestores de miembros"
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.ui.view,arch_db:whatsapp_conversation_extension.discuss_channel_view_form_whatsapp_minimal
+msgid "Members"
+msgstr "Miembros"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.ui.menu,name:whatsapp_conversation_extension.whatsapp_conversation_my_menu
+msgid "My Conversations"
+msgstr "Mis conversaciones"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.actions.act_window,name:whatsapp_conversation_extension.whatsapp_conversation_my_action
+#: model:ir.ui.menu,name:whatsapp_conversation_extension.discuss_whatsapp_conversation_my_menu
+msgid "My WhatsApp Conversations"
+msgstr "Mis conversaciones de WhatsApp"
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.ui.view,arch_db:whatsapp_conversation_extension.whatsapp_account_view_form_managers
+msgid "Select managers..."
+msgstr "Seleccionar gestores..."
+
+#. module: whatsapp_conversation_extension
+#: model:ir.model.fields,help:whatsapp_conversation_extension.field_discuss_channel__can_manage_whatsapp_members
+msgid ""
+"True if the current user belongs to the member manager group AND is assigned"
+" as manager of the WhatsApp account linked to this channel."
+msgstr ""
+"Verdadero si el usuario actual pertenece al grupo de gestores de miembros Y está asignado como gestor de la cuenta de WhatsApp vinculada a este canal."
+
+#. module: whatsapp_conversation_extension
+#: model:ir.model.fields,help:whatsapp_conversation_extension.field_whatsapp_account__whatsapp_member_manager_ids
+msgid ""
+"Users who can edit the members of all conversations linked to this WhatsApp "
+"account."
+msgstr "Usuarios que pueden editar los miembros de todas las conversaciones vinculadas a esta cuenta de WhatsApp."
+
+#. module: whatsapp_conversation_extension
+#: model:res.groups,name:whatsapp_conversation_extension.group_whatsapp_view_all_conversations
+msgid "View All WhatsApp Conversations"
+msgstr "Ver todas las conversaciones de WhatsApp"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.model,name:whatsapp_conversation_extension.model_whatsapp_account
+msgid "WhatsApp Business Account"
+msgstr "Cuenta de WhatsApp Business"
+
+#. module: whatsapp_conversation_extension
+#: model:res.groups,name:whatsapp_conversation_extension.group_whatsapp_member_manager
+msgid "WhatsApp Channel Member Manager"
+msgstr "Gestor de miembros del canal de WhatsApp"
+
+#. module: whatsapp_conversation_extension
+#: model_terms:ir.ui.view,arch_db:whatsapp_conversation_extension.discuss_channel_view_form_whatsapp_minimal
+msgid "WhatsApp Conversation"
+msgstr "Conversación de WhatsApp"
+
+#. module: whatsapp_conversation_extension
+#: model:ir.ui.menu,name:whatsapp_conversation_extension.discuss_whatsapp_conversation_menu_main
+msgid "WhatsApp Conversations"
+msgstr "Conversaciones de WhatsApp"
+
+#. module: whatsapp_conversation_extension
+#. odoo-python
+#: code:addons/whatsapp_conversation_extension/models/discuss_channel.py:0
+msgid ""
+"You do not have permission to manage the members of this WhatsApp "
+"conversation. You must belong to the \"WhatsApp Channel Member Manager\" "
+"group and be assigned as a manager for this channel."
+msgstr ""
+"No tienes permiso para gestionar los miembros de esta conversación de WhatsApp. Debes pertenecer al grupo \"Gestor de miembros del canal de WhatsApp\" y estar asignado como gestor de este canal."

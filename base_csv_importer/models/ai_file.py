@@ -48,19 +48,20 @@ class AIFile(models.Model):
         else:
             # Group records by col1 value (all records with same col1 go together)
             import logging
+
             _logger = logging.getLogger(__name__)
-            
+
             # Group records by col1 value
             groups_dict = {}
             for record in all_records:
-                col1_key = record.col1 or 'empty'  # Handle empty col1 values
+                col1_key = record.col1 or "empty"  # Handle empty col1 values
                 if col1_key not in groups_dict:
                     groups_dict[col1_key] = []
                 groups_dict[col1_key].append(record.id)
-            
+
             # Convert to list of groups
             groups = list(groups_dict.values())
-            
+
             _logger.info(f"Total records: {len(all_records)}")
             _logger.info(f"Total groups created: {len(groups)}")
             for i, group in enumerate(groups):

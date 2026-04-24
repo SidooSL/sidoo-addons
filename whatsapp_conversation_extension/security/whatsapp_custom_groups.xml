@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_whatsapp_view_all_conversations" model="res.groups">
+        <field name="name">View All WhatsApp Conversations</field>
+        <field name="category_id" ref="base.module_category_marketing_whatsapp"/>
+        <field name="comment">Grants access to the list of all WhatsApp conversations in the system.</field>
+    </record>
+
+    <record id="group_whatsapp_member_manager" model="res.groups">
+        <field name="name">WhatsApp Channel Member Manager</field>
+        <field name="category_id" ref="base.module_category_marketing_whatsapp"/>
+        <field name="comment">Allows managing the members of WhatsApp channels for which the user is assigned as a manager.</field>
+    </record>
+</odoo>
