@@ -15,7 +15,7 @@
 
         Configuration available in Accounting > Configuration > Settings.
     """,
-    "author": "SDi, Jorge Quinteros",
+    "author": "Jorge Quinteros, SDi",
     "website": "https://www.sdi.es",
     "license": "LGPL-3",
     "depends": [
