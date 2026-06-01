@@ -18,7 +18,7 @@
 #
 ###############################################################################
 {
-    'name': 'Reset Password URL Viewer',
+    'name': 'Base user Reset Password Link',
     'version': '18.0.1.0.0',
     'summary': 'Generate and display password reset URL without sending email',
     'description': """
