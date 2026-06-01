@@ -1,0 +1,145 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* reset_url_viewer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-01 14:37+0000\n"
+"PO-Revision-Date: 2026-06-01 14:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: reset_url_viewer
+#: model_terms:ir.ui.view,arch_db:reset_url_viewer.reset_url_wizard_form_view
+msgid ""
+"<i class=\"fa fa-exclamation-triangle me-1\"/>\n"
+"                        This link is <strong>temporary</strong> and must be shared\n"
+"                        <strong>only</strong> with the corresponding user."
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle me-1\"/>\n"
+"                        Este enlace es <strong>temporal</strong> y debe compartirse\n"
+"                        <strong>únicamente</strong> con el usuario correspondiente."
+
+#. module: reset_url_viewer
+#: model_terms:ir.ui.view,arch_db:reset_url_viewer.reset_url_wizard_form_view
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: reset_url_viewer
+#. odoo-python
+#: code:addons/reset_url_viewer/wizard/reset_url_wizard.py:0
+msgid "Could not generate the reset URL."
+msgstr "No se ha podido generar la URL de restablecimiento."
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__expires_at
+msgid "Expires At"
+msgstr "Expira el"
+
+#. module: reset_url_viewer
+#: model:ir.actions.server,name:reset_url_viewer.action_generate_reset_url
+msgid "Get Password Reset Link"
+msgstr "Obtener enlace de restablecimiento de contraseña"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__hours_to_expire
+msgid "Hours Until Expiration"
+msgstr "Horas hasta expiración"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__user_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: reset_url_viewer
+#. odoo-python
+#: code:addons/reset_url_viewer/wizard/reset_url_wizard.py:0
+msgid "Cannot generate a link for an archived user."
+msgstr "No se puede generar el enlace para un usuario archivado."
+
+#. module: reset_url_viewer
+#. odoo-python
+#: code:addons/reset_url_viewer/wizard/reset_url_wizard.py:0
+msgid "Password Reset URL"
+msgstr "URL de restablecimiento de contraseña"
+
+#. module: reset_url_viewer
+#: model_terms:ir.ui.view,arch_db:reset_url_viewer.reset_url_wizard_form_view
+msgid "Reset Link"
+msgstr "Enlace de restablecimiento"
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__reset_url
+msgid "Reset URL"
+msgstr "URL de restablecimiento"
+
+#. module: reset_url_viewer
+#. odoo-python
+#: code:addons/reset_url_viewer/wizard/reset_url_wizard.py:0
+msgid "The user has no related contact."
+msgstr "El usuario no tiene un contacto relacionado."
+
+#. module: reset_url_viewer
+#: model:ir.model.fields,field_description:reset_url_viewer.field_reset_url_wizard__user_id
+#: model_terms:ir.ui.view,arch_db:reset_url_viewer.reset_url_wizard_form_view
+msgid "User"
+msgstr "Usuario"
+
+#. module: reset_url_viewer
+#. odoo-python
+#: code:addons/reset_url_viewer/wizard/reset_url_wizard.py:0
+msgid "User not found."
+msgstr "Usuario no encontrado."
+
+#. module: reset_url_viewer
+#. odoo-python
+#: code:addons/reset_url_viewer/wizard/reset_url_wizard.py:0
+msgid "You are not allowed to generate password reset URLs."
+msgstr "No está permitido generar URLs de restablecimiento de contraseñas."
+
+#. module: reset_url_viewer
+#: model_terms:ir.ui.view,arch_db:reset_url_viewer.reset_url_wizard_form_view
+msgid "URL"
+msgstr "URL"
+
+#. module: reset_url_viewer
+#: model:ir.model,name:reset_url_viewer.model_reset_url_wizard
+msgid "Wizard to display password reset URL"
+msgstr "Asistente para mostrar URL de restablecimiento de contraseña"
