@@ -18,23 +18,23 @@
 #
 ###############################################################################
 {
-    'name': 'Base user Reset Password Link',
-    'version': '18.0.1.0.0',
-    'summary': 'Generate and display password reset URL without sending email',
-    'description': """
+    "name": "Base User Reset Password Link",
+    "version": "18.0.1.0.0",
+    "summary": "Generate and display password reset URL without sending email",
+    "description": """
         Module for neutralized or testing environments.
         It generates the password reset link
         and displays it in a wizard with a copy-to-clipboard button,
         without sending any email.
     """,
-    'category': 'Technical',
-    'author': 'Rialmar Aguilar, SDi',
-    'depends': ['base', 'auth_signup'],
-    'data': [
-        'security/ir.model.access.csv',
-        'data/ir_config_parameter_data.xml',
-        'wizard/reset_url_wizard_views.xml',
-        'views/res_users_action.xml',
+    "category": "Technical",
+    "author": "Rialmar Aguilar, SDi",
+    "depends": ["base", "auth_signup"],
+    "data": [
+        "security/ir.model.access.csv",
+        "data/ir_config_parameter_data.xml",
+        "wizard/reset_url_wizard_views.xml",
+        "views/res_users_action.xml",
     ],
-    'license': 'AGPL-3',
+    "license": "AGPL-3",
 }

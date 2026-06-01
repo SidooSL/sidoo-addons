@@ -129,6 +129,12 @@ msgid "User not found."
 msgstr "Usuario no encontrado."
 
 #. module: reset_url_viewer
+#. odoo-python
+#: code:addons/reset_url_viewer/wizard/reset_url_wizard.py:0
+msgid "You are not allowed to generate password reset URLs."
+msgstr "No está permitido generar URLs de restablecimiento de contraseñas."
+
+#. module: reset_url_viewer
 #: model_terms:ir.ui.view,arch_db:reset_url_viewer.reset_url_wizard_form_view
 msgid "URL"
 msgstr "URL"
